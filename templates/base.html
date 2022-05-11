@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +43,9 @@
           </ul> 
     </header>
     <main>
-    
+        {% block body %}
+        
+        {% endblock body %}
     </main>
     <footer class="page-footer text-center bg-dark">
         <p>
