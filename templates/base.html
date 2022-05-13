@@ -15,14 +15,14 @@
 
 <body>
     <header>
-        <nav class="navbar-dark bg-dark">
+        <nav class="navbar-dark" id="navi">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">The Waypoint</a>
+                <a href="#" id="logo"><img src="https://i.imgur.com/W7biBGR.png" alt="logo for the waypoint"></a>
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="fa-solid fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Search</a></li>
-                    <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">Profile</a>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">SEARCH</a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">PROFILE</a>
                     </li>
                 </ul>
                 
@@ -35,11 +35,11 @@
             <li><a href="#">Profile</a></li>
         </ul>
         <ul id="profile-dropdown" class="dropdown-content">
-              <li><a href="#">Profile Link</a></li>
-              <li><a href="#">Register</a></li>
-              <li><a href="#">Log In</a></li>
+              <li><a href="#">PROFILE_LINK</a></li>
+              <li><a href="#">REGISTER</a></li>
+              <li><a href="#">LOG IN</a></li>
               <li class="divider"></li>
-              <li><a href="#">Log out</a></li>
+              <li><a href="#">LOG OUT</a></li>
           </ul> 
     </header>
     <main>
@@ -47,7 +47,7 @@
         
         {% endblock body %}
     </main>
-    <footer class="page-footer text-center bg-dark">
+    <footer class="page-footer text-center footer-color">
         <p>
             Copyright 2022: The Waypoint
         </p>

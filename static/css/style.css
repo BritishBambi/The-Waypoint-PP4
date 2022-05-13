@@ -1,9 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Ubuntu&display=swap');
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: rgb(20, 24, 28);
+    color: rgb(153, 169, 187);
+    font-family: Noto Serif;
   }
 
-  main {
+.footer-color {
+    background-color: rgb(20, 24, 28);
+}
+
+main {
     flex: 1 0 auto;
   }
+
+h1, h2 {
+  font-family: Ubuntu, sansserif;
+}
+
+#navi{
+  background-color: rgb(20, 24, 28);
+}
+
+#logo{
+  padding-left: 10px;
+}
+
+#welcome-header {
+  color: rgb(153, 169, 187);
+  font-size: 80px;
+}
+
+.parallax-container {
+  height: 600px;
+}
+
+.parallax-div{
+  height: 400px;
+}
+
+.parallax-p{
+  font-size: 35px;
+}
+
+.center-header{
+  display: flex;
+  justify-content: center;
+}

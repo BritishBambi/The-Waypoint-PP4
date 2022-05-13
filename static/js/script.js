@@ -2,4 +2,8 @@ $(document).ready(function(){
     $('.sidenav').sidenav();
   });
 
-  $('.dropdown-trigger').dropdown();
+$('.dropdown-trigger').dropdown();
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
