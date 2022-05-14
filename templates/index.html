@@ -4,22 +4,33 @@
 {% block body %}
 
 <div class="row container center-header">
-    <h1 id="welcome-header">Welcome To The Waypoint!</h1>
-    <h2 class="header">Find & Score your favourite games!</h2>
+  <h1 id="welcome-header">Welcome To The Waypoint!</h1>
+  <h2 class="header">Find & Score your favourite games!</h2>
 </div>
 
 <div class="parallax-container">
-    <div class="parallax"><img src="{% static 'img/valorant.jpg' %}"></div>
+  <div class="parallax"><img src="{% static 'img/valorant.jpg' %}"></div>
+</div>
+<div class="section">
+  <div class="row container parallax-div center-header">
+    <h2 class="header">Search a Game!</h2>
+    <p class="text-darken-3 lighten-3 parallax-p">Use our search features to find and score any game in our database!
+    </p>
+    <a href="{% url 'search' %}" class="waves-effect waves-light btn-large">Search For a Game</a>
   </div>
-  <div class="section">
-    <div class="row container parallax-div center-header">
-      <h2 class="header">Search a Game!</h2>
-      <p class="text-darken-3 lighten-3 parallax-p">Use our search features to find and score any game in our database!</p>
-      <a href="{% url 'search' %}" class="waves-effect waves-light btn-large">Search For a Game</a>
-    </div>
+</div>
+<div class="info-block">
+  <div class="info-block welcome-info">
+    <h2><i class="fa-solid fa-magnifying-glass"></i></h2>
+    <h3>Find your favorite game</h3>
+    <p class="info-text center light">Use our search tool to scan a database of games! There you can find information
+      about any game you search for. Feel free to leave a short review on the game with a score and other people can
+      know what you think.</p>
   </div>
-    <div class="parallax-container">
-    <div class="parallax"><img src="{% static 'img/elden-ring.jpg' %}"></div>
-  </div>
+</div>
+</div>
+<div class="parallax-container">
+  <div class="parallax"><img src="{% static 'img/elden-ring.jpg' %}"></div>
+</div>
 
 {% endblock body %}

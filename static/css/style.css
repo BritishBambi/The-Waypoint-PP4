@@ -17,7 +17,7 @@ main {
     flex: 1 0 auto;
   }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: Ubuntu, sansserif;
 }
 
@@ -39,7 +39,7 @@ h1, h2 {
 }
 
 .parallax-div{
-  height: 400px;
+  height: 300px;
 }
 
 .parallax-p{
@@ -57,4 +57,17 @@ h1, h2 {
 
 .search-div{
   height: 30vh;
+}
+
+.info-block{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.info-text{
+  font-size: larger;
+  width: 400px;
 }
