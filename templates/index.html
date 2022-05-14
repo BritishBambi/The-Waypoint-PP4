@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block body %}
 
 <div class="row container center-header">
@@ -7,7 +9,7 @@
 </div>
 
 <div class="parallax-container">
-    <div class="parallax"><img src="https://images.wallpapersden.com/image/download/kay-o-x-jett-valorant-game-hd-poster_bG1pZm6UmZqaraWkpJRnamtlrWZlZ2k.jpg"></div>
+    <div class="parallax"><img src="{% static 'img/valorant.jpg' %}"></div>
   </div>
   <div class="section gray">
     <div class="row container parallax-div center-header">
@@ -17,7 +19,7 @@
     </div>
   </div>
     <div class="parallax-container">
-    <div class="parallax"><img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/elden-ring-cover-art.jpg"></div>
+    <div class="parallax"><img src="{% static 'img/elden-ring.jpg' %}"></div>
   </div>
       
 {% endblock body %}
