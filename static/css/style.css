@@ -50,3 +50,11 @@ h1, h2 {
   display: flex;
   justify-content: center;
 }
+
+.parallax-search{
+  height: 300px;
+}
+
+.search-div{
+  height: 30vh;
+}

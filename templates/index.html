@@ -11,15 +11,15 @@
 <div class="parallax-container">
     <div class="parallax"><img src="{% static 'img/valorant.jpg' %}"></div>
   </div>
-  <div class="section gray">
+  <div class="section">
     <div class="row container parallax-div center-header">
       <h2 class="header">Search a Game!</h2>
       <p class="text-darken-3 lighten-3 parallax-p">Use our search features to find and score any game in our database!</p>
-      <a href="#" class="waves-effect waves-light btn-large">Search For a Game</a>
+      <a href="{% url 'search' %}" class="waves-effect waves-light btn-large">Search For a Game</a>
     </div>
   </div>
     <div class="parallax-container">
     <div class="parallax"><img src="{% static 'img/elden-ring.jpg' %}"></div>
   </div>
-      
+
 {% endblock body %}

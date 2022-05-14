@@ -1,4 +1,22 @@
 {% extends 'base.html' %}
-{% block body %}
+{% load static %}
 
+{% block body %}
+<div class="parallax-container parallax-search">
+    <div class="parallax parallax-search"><img src="{% static 'img/overwatch.png' %}"></div>
+  </div>
+  <div class="section">
+    <div class="row container search-div center-header">
+      <div class="input-field col s12">
+        <h2>Search:</h2>
+        <textarea typ="submit" id="game-search" name="game-search" class="materialize-textarea white-text"></textarea> 
+        <button type="submit" name="action" class="waves-effect waves-light btn">Find a game!</button>
+      </div>
+    </div>
+  </div>
+    <div class="parallax-container parallax-search">
+    <div class="parallax parallax-search"><img src="{% static 'img/apex-legends.png' %}"></div>
+  </div>
+
+  
 {% endblock body %}
