@@ -13,7 +13,7 @@ def search(request):
     query = request.GET.get('query')
 
     if query:
-        url = 'https://rawg.io/api/games?key=c4a730f92484414c82505dab317c1720&search=' + query + '&search_precise=1&ordering=-rating&page_size=12'
+        url = 'https://rawg.io/api/games?key=c4a730f92484414c82505dab317c1720&search=' + query + '&search_exact=1&ordering=-metacritic&page_size=12'
         response = requests.get(url)
         game_data = response.json()
 
