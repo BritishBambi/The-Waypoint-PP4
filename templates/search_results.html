@@ -5,7 +5,7 @@
 {% block body %}
 <div id="index-banner">
     <div class="section">
-        <div class="container">
+        <div class="container center">
             <h2>Search results for:</h2>
             <h3>{{query}}</h3>
         </div>
@@ -21,8 +21,8 @@
           <img class="card-img-top" src="{{ game.background_image }}" alt="">
         </div>
         <div class="card-content">
-          <span class="card-title"><b>{{ game.name }}</b></span>
-          <span class="right"><i class="material-icons"></i>{{ game.released }}</span>
+          <span class="card-title">{{ game.name }}</span>
+          <span class=""><i class="material-icons"></i>{{ game.released }}</span>
         </div>
       </div>
     </div>

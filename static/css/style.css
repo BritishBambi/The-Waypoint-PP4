@@ -77,3 +77,9 @@ input {
   font-size: larger;
   width: 400px;
 }
+
+.card{
+  background: #222224 !important;
+  font-size: larger;
+  font-family: Ubuntu, sansserif;;
+}
