@@ -7,3 +7,7 @@ def home(request):
 
 def search(request):
     return render(request, 'search.html')
+
+
+def game_search(request):
+    return render(request, 'search_results.html')

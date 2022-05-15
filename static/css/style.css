@@ -59,6 +59,12 @@ h1, h2, h3 {
   height: 30vh;
 }
 
+input {
+
+  background-color : #7e0e0e; 
+
+}
+
 .info-block{
   display: flex;
     justify-content: center;

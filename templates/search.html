@@ -7,11 +7,13 @@
   </div>
   <div class="section">
     <div class="row container search-div center-header">
+      <form class="col s12">
       <div class="input-field col s12">
         <h2>Search:</h2>
-        <textarea typ="submit" id="game-search" name="game-search" class="materialize-textarea white-text"></textarea> 
+        <input type="text" class="white-text" placeholder="Start typing..." id="query" name="query" value="{{ request.GET.query }}" required>
         <button type="submit" name="action" class="waves-effect waves-light btn">Find a game!</button>
       </div>
+      </form>
     </div>
   </div>
     <div class="parallax-container parallax-search">
