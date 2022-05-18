@@ -81,5 +81,9 @@ input {
 .card{
   background: #222224 !important;
   font-size: larger;
-  font-family: Ubuntu, sansserif;;
+  font-family: Ubuntu, sansserif;
+}; 
+
+.learn-more{
+  padding: 24px;
 }
