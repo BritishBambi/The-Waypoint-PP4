@@ -20,11 +20,27 @@ class Game(models.Model):
         return self.name
 
 
+SCORES = [
+    (1, '1 - Trash'),
+    (2, '2 - Horrible'),
+    (3, '3 - Bad'),
+    (4, '4 - Not Good'),
+    (5, '5 - OK'),
+    (6, '6 - Enjoyable'),
+    (7, '7 - Good'),
+    (8, '8 - Very Good'),
+    (9, '9 - Perfect'),
+    (10, '10 - Master Piece'), 
+]
+
+
 class Review(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=80)
     body = models.TextField()
+    score = models.PositiveSmallIntegerField(choices=SCORES)
     created_on = models.DateTimeField(auto_now_add=True)
+    likes = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['created_on']
