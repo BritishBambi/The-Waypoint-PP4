@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 
+from .models import Game
+
 import requests
 
 
@@ -45,5 +47,3 @@ def pagination(request, query, page_number):
     template = loader.get_template('search_results.html')
 
     return HttpResponse(template.render(context, request))
-
-
