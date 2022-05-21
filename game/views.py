@@ -46,3 +46,7 @@ def pagination(request, query, page_number):
     template = loader.get_template('search_results.html')
 
     return HttpResponse(template.render(context, request))
+
+
+def game_details(request):
+    return render(request, 'game_details.html')
