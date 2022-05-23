@@ -2,34 +2,45 @@
 {% load static %}
 
 {% block body %}
-
 <div class="container">
     <br><br>
     <div class="row">
         <div class="col-md-5">
             <br>
-            <img class="img-fluid" src="https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg"
-                alt="" style="width: 90%;">
+            <img class="img-fluid" src='{{ game_data.background_image }}'
+                alt="" style="width: 100%;">
             <br><br>
-            <h3 class="card-title text-center ">Game Title</h3>
+            <h3 class="card-title text-center ">{{ game_data.name }}</h3>
         </div>
         <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
-            <p class="lead">Game Summary</p>
+            <p class="lead">{{ game_data.description_raw }}</p>
             <ul>
-                <li><span>Year: <b>Release Date</b></span></li>
-                <li>Genre:</li>
-                <li>Platforms: </li>
-                <li>Developer:</li>
+                <li><span>Released: <b>{{ game_data.released }}</b></span></li>
+                <li>Genre: 
+                    {% for genre in genres %}
+                    {{ genre.name }},
+                    {% endfor %}
+                </li>
+                <li>Platforms:
+                    {% for platform in platforms %}
+                    {{ platform.platform.name }},
+                    {% endfor %}
+                </li> 
+                <li>Developer: 
+                    {% for developer in developers %}
+                    {{ developer.name }},
+                    {% endfor %}
+                </li>
             </ul>
         </div>
-        <div class="">
+        <div>
             <br>
             <span class="title">Rated</span>
             <p><b>Review Average</b> by <b>Review Count</b> people </p>
 
             <br>
             <a href="#" class="waves-effect waves-light btn game-btn">Rate</a>
-            <a href="#" class="waves-effect waves-light btn game-btn">Add to played</a>
+            <a href="#" class="waves-effect waves-light btn game-btn">Add to Played</a>
             <a href="#" class="waves-effect waves-light btn game-btn">Add to Favourites</a>
         </div>
     </div>
@@ -58,6 +69,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock body %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 
+from .models import Game
 
 import requests
 
@@ -48,5 +49,27 @@ def pagination(request, query, page_number):
     return HttpResponse(template.render(context, request))
 
 
-def game_details(request):
-    return render(request, 'game_details.html')
+def game_details(request, game_id):
+    url = 'https://rawg.io/api/games/' + game_id + '?key=c4a730f92484414c82505dab317c1720'
+    response = requests.get(url)
+    game_data = response.json()
+
+    game = Game.objects.get_or_create(
+            name=game_data['name'],
+            gameID=game_data['id']
+        )
+
+    platforms = game_data['platforms']
+    genres = game_data['genres']
+    developers = game_data['developers']
+
+    context = {
+        'game_data': game_data,
+        'platforms': platforms,
+        'genres': genres,
+        'developers': developers,
+    }
+
+    template = loader.get_template('game_details.html')
+
+    return HttpResponse(template.render(context, request))

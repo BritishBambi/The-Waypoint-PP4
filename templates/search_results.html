@@ -24,7 +24,7 @@
       <div class="card-content">
         <span class="card-title">{{ game.name }}</span>
         <span>{{ game.released }}</span>
-        <a href="#"><input type="submit" value="Learn More" class="btn btn-danger btn-sm right" type="button" /></a>
+        <a href="{% url 'game_details' game.id %}"><input type="submit" value="Learn More" class="btn btn-danger btn-sm right" type="button" /></a>
       </div>
     </div>
   </div>
