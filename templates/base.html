@@ -41,15 +41,15 @@
               <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
               <li class="divider"></li>
               {% else %}
-              <li><a href="#">REGISTER</a></li>
+              <li><a href="{% url 'account_signup' %}">REGISTER</a></li>
               <li><a href="{% url 'account_login' %}">LOG IN</a></li>
               {% endif %}
           </ul> 
     </header>
     <main>
-        {% block body %}
+        {% block content %}
         
-        {% endblock body %}
+        {% endblock content %}
     </main>
     <footer class="page-footer text-center footer-color">
         <p>

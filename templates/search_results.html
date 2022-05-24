@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block body %}
+{% block content %}
 <div id="index-banner">
   <div class="section">
     <div class="container center">
@@ -24,7 +24,8 @@
       <div class="card-content">
         <span class="card-title">{{ game.name }}</span>
         <span>{{ game.released }}</span>
-        <a href="{% url 'game_details' game.id %}"><input type="submit" value="Learn More" class="btn btn-danger btn-sm right" type="button" /></a>
+        <a href="{% url 'game_details' game.id %}"><input type="submit" value="Learn More"
+            class="btn btn-danger btn-sm right" type="button" /></a>
       </div>
     </div>
   </div>
@@ -36,4 +37,4 @@
 
 
 
-      {% endblock body %}
+    {% endblock %}
