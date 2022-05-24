@@ -36,11 +36,14 @@
             <li><a href="#">Profile</a></li>
         </ul>
         <ul id="profile-dropdown" class="dropdown-content">
+            {% if user.is_authenticated %}
               <li><a href="#">PROFILE_LINK</a></li>
-              <li><a href="#">REGISTER</a></li>
-              <li><a href="#">LOG IN</a></li>
+              <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
               <li class="divider"></li>
-              <li><a href="#">LOG OUT</a></li>
+              {% else %}
+              <li><a href="#">REGISTER</a></li>
+              <li><a href="{% url 'account_login' %}">LOG IN</a></li>
+              {% endif %}
           </ul> 
     </header>
     <main>
