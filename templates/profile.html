@@ -14,11 +14,10 @@
             {% else %}
             <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="default profile photo" style="width: 100%;">
             {% endif %}
-            <br><br>
-            <h3 class="card-title text-center ">{{ user.username }}</h3>
-            
+            <br>
         </div>
         <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
+            <h3 class="card-title">{{ user.username }}</h3>
             <ul style="font-size: 20px;">
                 <li><span>Name: <b>{{ user.profile.first_name }} {{ user.profile.last_name }}</b></span></li>
                 <li>Location: {{ user.profile.location }}</li>
