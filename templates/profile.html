@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
-
+<div class="content-section">
+    <div class="col-sm-4 align-items-center justify-content-center">
+        <span class="img-container flex justify-content-center">
+            {% if user.username.profile %}
+            {% cloudinary user.profile.profile_image alt=profile.username %}
+            {% else %}
+            {% cloudinary user.profile.profile_image alt='default profile photo' %}
+            {% endif %}
+        </span>
+    </div>
+    <div class="media-body">
+        <h2 class="account-heading">{{ user.username }}</h2>
+        <h3>{{ user.profile.first_name}}</h3>
+    </div>
+</div>
+</div>
 {% endblock %}
