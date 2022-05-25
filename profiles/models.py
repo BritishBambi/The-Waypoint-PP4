@@ -16,8 +16,8 @@ class Profile(models.Model):
     bio = models.CharField(max_length=700, null=True, blank=True)
     location = models.CharField(max_length=100, null=True, blank=True)
     profile_image = CloudinaryField('image', default=default_img)
-    to_play = models.ManyToManyField(Game, related_name='to_play')
-    played = models.ManyToManyField(Game, related_name='played')
+    to_play = models.ManyToManyField(Game, related_name='to_play', blank=True)
+    played = models.ManyToManyField(Game, related_name='played', blank=True)
 
     def __str__(self):
         return str(self.user)
