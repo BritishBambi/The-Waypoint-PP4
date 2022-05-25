@@ -33,11 +33,18 @@
         <ul class="sidenav" id="mobile-nav">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'search' %}">Search</a></li>
-            <li><a href="#">Profile</a></li>
+            {% if user.is_authenticated %} 
+            <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+            <br>
+            <li><a href="{% url 'account_logout' %}">Log Out</a></li>
+            {% else %}
+            <li><a href="{% url 'account_signup' %}">Register</a></li>
+            <li><a href="{% url 'account_login' %}">Log In</a></li>
+            {% endif %}
         </ul>
         <ul id="profile-dropdown" class="dropdown-content">
             {% if user.is_authenticated %}
-              <li><a href="#">PROFILE_LINK</a></li>
+              <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
               <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
               <li class="divider"></li>
               {% else %}
