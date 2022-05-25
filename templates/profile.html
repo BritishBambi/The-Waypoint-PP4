@@ -3,20 +3,30 @@
 {% load cloudinary %}
 
 {% block content %}
-<div class="content-section">
-    <div class="col-sm-4 align-items-center justify-content-center">
-        <span class="img-container flex justify-content-center">
+
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-md-5">
+            <br>
             {% if user.username.profile %}
-            {% cloudinary user.profile.profile_image alt=profile.username %}
+            <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="user.username" style="width: 100%;">
             {% else %}
-            {% cloudinary user.profile.profile_image alt='default profile photo' %}
+            <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="default profile photo" style="width: 100%;">
             {% endif %}
-        </span>
-    </div>
-    <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <h3>{{ user.profile.first_name}}</h3>
+            <br><br>
+            <h3 class="card-title text-center ">{{ user.username }}</h3>
+            
+        </div>
+        <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
+            <ul style="font-size: 20px;">
+                <li><span>Name: <b>{{ user.profile.first_name }} {{ user.profile.last_name }}</b></span></li>
+                <li>Location: {{ user.profile.location }}</li>
+            </ul>
+            <p class="lead">{{ user.profile.bio }}</p>
+            <a href="#" class="btn">Edit Profile</a>
+        </div>
     </div>
 </div>
-</div>
+
 {% endblock %}
