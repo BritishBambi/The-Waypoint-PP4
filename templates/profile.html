@@ -12,7 +12,8 @@
             {% if user.username.profile %}
             <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="user.username" style="width: 100%;">
             {% else %}
-            <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="default profile photo" style="width: 100%;">
+            <img class="img-fluid" src='{{ user.profile.profile_image.url }}' alt="default profile photo"
+                style="width: 100%;">
             {% endif %}
             <br>
         </div>
@@ -24,6 +25,30 @@
             </ul>
             <p class="lead">{{ user.profile.bio }}</p>
             <a href="{% url 'editProfile' %}" class="btn">Edit Profile</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Played Games</h3>
+            <ul>
+                {% for game in user.profile.played.all %}
+                <li>
+                    <a href="{% url 'game_details' game.gameID %}">{{ game.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>Games to play</h3>
+            <ul>
+                {% for game in user.profile.to_play.all %}
+                <li>
+                    <a href="{% url 'game_details' game.gameID %}">{{ game.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
