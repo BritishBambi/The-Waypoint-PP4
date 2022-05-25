@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'game',
+    'profiles',
 ]
 
 SITE_ID = 1

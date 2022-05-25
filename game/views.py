@@ -73,7 +73,3 @@ def game_details(request, game_id):
     template = loader.get_template('game_details.html')
 
     return HttpResponse(template.render(context, request))
-
-
-def profile(request):
-    return render(request, 'profile.html')
