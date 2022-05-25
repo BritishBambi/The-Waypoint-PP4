@@ -24,7 +24,7 @@
                 <li>Location: {{ user.profile.location }}</li>
             </ul>
             <p class="lead">{{ user.profile.bio }}</p>
-            <a href="#" class="btn">Edit Profile</a>
+            <a href="{% url 'editProfile' %}" class="btn">Edit Profile</a>
         </div>
     </div>
 </div>
