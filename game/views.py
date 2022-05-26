@@ -25,11 +25,11 @@ def search(request):
             'page_number': 2,
         }
 
-        template = loader.get_template('search_results.html')
+        template = loader.get_template('game/search_results.html')
 
         return HttpResponse(template.render(context, request))
 
-    return render(request, 'search.html')
+    return render(request, 'game/search.html')
 
 
 def pagination(request, query, page_number):
@@ -44,7 +44,7 @@ def pagination(request, query, page_number):
             'page_number': page_number,
         }
 
-    template = loader.get_template('search_results.html')
+    template = loader.get_template('game/search_results.html')
 
     return HttpResponse(template.render(context, request))
 
@@ -70,6 +70,6 @@ def game_details(request, game_id):
         'developers': developers,
     }
 
-    template = loader.get_template('game_details.html')
+    template = loader.get_template('game/game_details.html')
 
     return HttpResponse(template.render(context, request))

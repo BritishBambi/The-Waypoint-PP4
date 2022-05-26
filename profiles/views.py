@@ -19,7 +19,7 @@ def profile(request, username):
     'profile': user_profile,
     }
 
-    template = loader.get_template('profile.html')
+    template = loader.get_template('profiles/profile.html')
 
     return HttpResponse(template.render(context, request))
 
@@ -46,4 +46,4 @@ def editProfile(request, username):
         'p_form': p_form,
         'profile': user_profile
     }
-    return render(request, 'edit_profile.html', context)
+    return render(request, 'profiles/edit_profile.html', context)
