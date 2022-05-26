@@ -95,23 +95,33 @@ The main font I selected for headings was Ubuntu and the body was Noto Serif.
 
 Home Page:
 
+The Home Page welcomes the user into the site with a clear heading and description as to what the site does. From here the user can easily find the search features located under the primary image with a heading. This brings the user to the search page as the main call to action.
+
 ![Screenshot of home page](assets/screenshots/home-screenshot.PNG "Home")
 
-Nav Bar:
+Nav Bar: The nav bar has a simple design that makes it easy for the user to find available links and the site logo. Clicking on the site logo will also bring the user to the home page from any other page on the site. The links are capitalized and easy to locate.
 
 ![Screenshot of nav bar](assets/screenshots/navbar-screenshot.PNG "Nav Bar")
+
+On mobile the nav bar will squish down into a "burger bun" icon which when pressed will present the user with the nav bar options
 
 ![Screenshot of home page](assets/screenshots/navbar-mobile-screenshot.PNG "Home")
 
 Game Search:
 
+The game search is the main function of the site, the user is given a clear window as to where the search bar is and how to go through with the search. Whatever the user types will be saved as a query to render the search results page with.
+
 ![Screenshot of home page](assets/screenshots/search-screenshot.PNG "Home")
 
 Game Cards:
 
+The game card page will render the search query that the user has provided. For each search result a new card will be rendered. To prevent putting too many on one page a limit of 12 per page has been set to ensure the user does not also get overwhelemd with choice. To ensure more accurate searches an API setting has been made to order the games by metacritic rating. This means it is less likley to put user made or fan games high on the list when making a general query.
+
 ![Screenshot of home page](assets/screenshots/search-results-screenshot.PNG "Home")
 
 Game Page:
+
+The game page takes the ID of the game and matches it to the API to render information about it clearly to the user. It has an image card to match the game art to the descripttion. This is more likley to give the user confirmation that they have found the correct game. Similarly the information on the side of the image is also detailed with the game description, release date, platforms, genres and developers. This gives the user all the quick information they could want to find on a game.
 
 ![Screenshot of home page](assets/screenshots/game-details-screenshot.PNG "Home")
 
@@ -119,9 +129,13 @@ Reviews:
 
 Profile Page:
 
+Whenever a user account is created a Profile page is also generated for the user. From here the user can display their profile picture in a similar design to the game details to have uniform design. Similarly there is a section next to the image that a user can fill in with personal details to personalize their profile page. If the user is signed in and viewing their own page they will be able to see the Edit Profile button.
+
 ![Screenshot of home page](assets/screenshots/profile-screenshot.PNG "Home")
 
 Edit Profile:
+
+The edit profile page allows easy acccess for the user to update profile information as well as account details. Links here from allauth are provided to change/verify email and also change password. The rest is all for the profile page which will update the database whenever it is filled out and the user presses the update button.
 
 ![Screenshot of home page](assets/screenshots/edit-profile-screenshot.PNG "Home")
 
@@ -192,7 +206,7 @@ Edit Profile:
 
 During development I encountered an issue where my workspace was not correctly building and would not save files correctly. To get around this I ended up creating a new Git repository based on the CI template. This seemed to fix my issue however a small amount of progress was lost and my README needed to be done from scratch.
 
-Part way through development 
+Part way through development my access to the gitpod workspaces was limited and I was unable to work on my project for a few days. Fortunatly this was fixed so I could continue working on my project.
 
 ## Acknowledgments
 
