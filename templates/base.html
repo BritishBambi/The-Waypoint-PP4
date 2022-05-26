@@ -34,7 +34,7 @@
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'search' %}">Search</a></li>
             {% if user.is_authenticated %} 
-            <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+            <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
             <br>
             <li><a href="{% url 'account_logout' %}">Log Out</a></li>
             {% else %}
@@ -44,7 +44,7 @@
         </ul>
         <ul id="profile-dropdown" class="dropdown-content">
             {% if user.is_authenticated %}
-              <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
+              <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
               <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
               <li class="divider"></li>
               {% else %}

@@ -7,6 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
+            {% if user.is_authenticated and user == profile.user %}
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -20,6 +21,11 @@
                     <a href="{% url 'account_email' %}" class="btn">Change Email</a>
                 </div>
             </form>
+            {% else %}
+            <div>
+                <h2>This is not your profile! Please go back to your own profile page!</h2>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
