@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ def profile(request, username):
     user_profile = Profile.objects.get(user=user)
 
     context = {
-	'profile': user_profile,
+    'profile': user_profile,
     }
 
     template = loader.get_template('profile.html')
@@ -36,7 +36,7 @@ def editProfile(request, username):
             u_form.save()
             p_form.save()
             messages.success(request, 'Your account has been updated!')
-            return redirect('profile')
+            return redirect(reverse('profile', args=[user]))
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
