@@ -123,7 +123,7 @@ Profile Page:
 
 Edit Profile:
 
-![Screenshot of home page](assets/screenshots/edi-profile-screenshot.PNG "Home")
+![Screenshot of home page](assets/screenshots/edit-profile-screenshot.PNG "Home")
 
 
 ## Future Features
