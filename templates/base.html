@@ -18,7 +18,8 @@
     <header>
         <nav class="navbar-dark" id="navi">
             <div class="nav-wrapper">
-                <a href="{% url 'home' %}" id="logo"><img src="https://i.imgur.com/W7biBGR.png" alt="logo for the waypoint"></a>
+                <a href="{% url 'home' %}" id="logo"><img src="https://i.imgur.com/W7biBGR.png"
+                        alt="logo for the waypoint"></a>
                 <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="fa-solid fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{% url 'home' %}">HOME</a></li>
@@ -26,14 +27,14 @@
                     <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">PROFILE</a>
                     </li>
                 </ul>
-                
+
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-nav">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'search' %}">Search</a></li>
-            {% if user.is_authenticated %} 
+            {% if user.is_authenticated %}
             <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
             <br>
             <li><a href="{% url 'account_logout' %}">Log Out</a></li>
@@ -44,18 +45,35 @@
         </ul>
         <ul id="profile-dropdown" class="dropdown-content">
             {% if user.is_authenticated %}
-              <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
-              <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
-              <li class="divider"></li>
-              {% else %}
-              <li><a href="{% url 'account_signup' %}">REGISTER</a></li>
-              <li><a href="{% url 'account_login' %}">LOG IN</a></li>
-              {% endif %}
-          </ul> 
+            <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
+            <li><a href="{% url 'account_logout' %}">LOG OUT</a></li>
+            <li class="divider"></li>
+            {% else %}
+            <li><a href="{% url 'account_signup' %}">REGISTER</a></li>
+            <li><a href="{% url 'account_login' %}">LOG IN</a></li>
+            {% endif %}
+        </ul>
     </header>
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    {% endif %}
     <main>
         {% block content %}
-        
+
         {% endblock content %}
     </main>
     <footer class="page-footer text-center footer-color">
@@ -72,6 +90,9 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        $('.toast').toast('show');
+    </script>
 </body>
 
 </html>
