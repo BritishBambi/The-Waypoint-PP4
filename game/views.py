@@ -91,6 +91,18 @@ def add_to_play(request, game_id):
     return HttpResponseRedirect(reverse('game_details', args=[game_id]))
 
 
+@login_required
+def remove_to_play(request, game_id):
+    game = Game.objects.get(gameID=game_id)
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    profile.to_play.remove(game)
+    messages.success(request, 'Game has been removed from list')
+
+    return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+
+
 @login_required()
 def add_to_played(request, game_id):
     game = Game.objects.get(gameID=game_id)

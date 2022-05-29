@@ -16,7 +16,7 @@ def profile(request, username):
     user_profile = Profile.objects.get(user=user)
 
     context = {
-    'profile': user_profile,
+        'profile': user_profile,
     }
 
     template = loader.get_template('profiles/profile.html')
