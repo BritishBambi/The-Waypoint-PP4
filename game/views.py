@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from profiles.models import Profile
+
 
 from .models import Game
 
@@ -73,3 +77,15 @@ def game_details(request, game_id):
     template = loader.get_template('game/game_details.html')
 
     return HttpResponse(template.render(context, request))
+
+
+@login_required
+def add_to_play(request, game_id):
+    game = Game.objects.get(gameID=game_id)
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    profile.to_play.add(game)
+    messages.success(request, 'Game has been added to list')
+
+    return HttpResponseRedirect(reverse('game_details', args=[game_id]))

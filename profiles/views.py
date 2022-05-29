@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
-
-from django.contrib.auth.models import User
-from .models import Profile
 from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.models import User
+from .models import Profile
+
 from .forms import UserUpdateForm, ProfileUpdateForm
 
 # Create your views here.
