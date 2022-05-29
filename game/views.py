@@ -89,3 +89,20 @@ def add_to_play(request, game_id):
     messages.success(request, 'Game has been added to list')
 
     return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+
+
+@login_required()
+def add_to_played(request, game_id):
+    game = Game.objects.get(gameID=game_id)
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    if profile.to_play.filter(gameID=game_id).exists():
+        profile.to_play.remove(game)
+        profile.played.add(game)
+    else:
+        profile.played.add(game)
+
+    messages.success(request, 'Game has been added to list')
+
+    return HttpResponseRedirect(reverse('game_details', args=[game_id]))
