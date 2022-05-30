@@ -1,31 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Ubuntu&display=swap');
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: rgb(20, 24, 28);
-    color: rgb(153, 169, 187);
-    font-family: Noto Serif;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(20, 24, 28);
+  color: rgb(153, 169, 187);
+  font-family: Noto Serif;
+}
 
 .footer-color {
-    background-color: rgb(20, 24, 28);
-}
-
-main {
-    flex: 1 0 auto;
-  }
-
-h1, h2, h3 {
-  font-family: Ubuntu, sansserif;
-}
-
-#navi{
   background-color: rgb(20, 24, 28);
 }
 
-#logo{
+main {
+  flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Ubuntu, sansserif;
+}
+
+#navi {
+  background-color: rgb(20, 24, 28);
+}
+
+#logo {
   padding-left: 10px;
 }
 
@@ -38,68 +40,76 @@ h1, h2, h3 {
   height: 500px;
 }
 
-.parallax-div{
+.parallax-div {
   height: 300px;
 }
 
-.parallax-p{
+.parallax-p {
   font-size: 35px;
 }
 
-.center-header{
+.center-header {
   display: flex;
   justify-content: center;
 }
 
-.parallax-search{
+.parallax-search {
   height: 300px;
 }
 
-.search-div{
+.search-div {
   height: 30vh;
 }
 
 input {
 
-  background-color : #7e0e0e; 
+  background-color: #7e0e0e;
 
 }
 
-.info-block{
+.info-block {
   display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
 }
 
-.info-text{
+.info-text {
   font-size: larger;
   width: 400px;
 }
 
-.card{
+.card {
   background: #222224 !important;
   font-size: larger;
   font-family: Ubuntu, sansserif;
-}; 
+}
 
-.learn-more{
+;
+
+.learn-more {
   padding: 24px;
 }
 
-.game-btn{
+.game-btn {
   margin-left: 5px;
   margin-top: 5px;
 }
 
-.form-display{
+.form-display {
   display: block;
 }
 
-.collection{
+.collection {
   border: 5px solid #3b3b3b;
 }
-.collection .collection-item{
+
+.collection .collection-item {
   background-color: #222224;
+}
+
+.dropdown-content {
+  background-color: rgb(30, 34, 37);
+  color: rgb(153, 169, 187);
 }
