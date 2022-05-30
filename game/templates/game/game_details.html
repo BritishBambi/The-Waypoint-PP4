@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 
 {% block content %}
 <div class="container">
@@ -7,10 +8,12 @@
     <div class="row">
         <div class="col-md-5">
             <br>
-            <img class="img-fluid" src='{{ game_data.background_image }}'
-                alt="" style="width: 100%;">
+            <img class="img-fluid" src='{{ game_data.background_image }}' alt="" style="width: 100%;">
             <br><br>
             <h3 class="card-title text-center ">{{ game_data.name }}</h3>
+            <br>
+            <h4 class="title center">Rated <b>{{ reviews_avg.rate__avg|floatformat:"-1" }}</b> by
+                <b>{{ reviews_count }}</b> people</h4>
         </div>
         <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
             <p class="lead">{{ game_data.description_raw }}</p>
@@ -19,7 +22,7 @@
                 <li>
                     Game ID: {{ game_data.id }}
                 </li>
-                <li>Genre: 
+                <li>Genre:
                     {% for genre in genres %}
                     {{ genre.name }},
                     {% endfor %}
@@ -28,8 +31,8 @@
                     {% for platform in platforms %}
                     {{ platform.platform.name }},
                     {% endfor %}
-                </li> 
-                <li>Developer: 
+                </li>
+                <li>Developer:
                     {% for developer in developers %}
                     {{ developer.name }},
                     {% endfor %}
@@ -37,38 +40,36 @@
             </ul>
         </div>
         <div>
-            <br>
-            <span class="title">Rated</span>
-            <p><b>Review Average</b> by <b>Review Count</b> people </p>
+
 
             <br>
             <a href="{% url 'rate' game_data.id %}" class="waves-effect waves-light btn game-btn">Rate</a>
             <a href="{% url 'add_toplay' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Play</a>
             <a href="{% url 'remove_toplay' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
-            <a href="{% url 'add_toplayed' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Played</a>
+            <a href="{% url 'add_toplayed' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to
+                Played</a>
             <a href="{% url 'remove_played' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
         </div>
     </div>
 </div>
-
-<h2>Reviews</h2>
 <div class="divider"></div>
 
-
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-lg-8 mt-3 offset-md-2">
+        <h2 class="center">Reviews</h2>
         <div class="card">
             <div class="card-content">
                 <ul class="collection">
+                    {% for review in reviews %}
                     <li class="collection-item avatar">
-                        <img src="data:image/jpeg;base64,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"
-                            alt="" class="circle">
-                        <span class="title"><b>First_Name Last_Name</b></span>
-                        <p>@Username</p>
-                        <p>Review Date</p>
-                        <a href="#"> Score / 10</a>
-                        <a href="#" class="waves-effect waves-light btn game-btn secondary-content">Read Review</a>
+                        <img src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture" class="circle">
+                        <span class="title"><b>{{ review.user.profile.first_name }}
+                                {{ review.user.profile.last_name }}</b></span>
+                        <p>@{{ review.user.username }}</p>
+                        <p>{{ review.date }}</p>
+                        <a href="#" class="secondary-content">{{ review.rate }} / 10</a>
                     </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

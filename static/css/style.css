@@ -96,3 +96,10 @@ input {
 .form-display{
   display: block;
 }
+
+.collection{
+  border: 5px solid #3b3b3b;
+}
+.collection .collection-item{
+  background-color: #222224;
+}

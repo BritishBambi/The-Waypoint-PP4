@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from profiles.models import Profile
-from .models import Game
+from .models import Game, Review
+from django.db.models import Avg
 
 from .forms import RateForm
 
@@ -59,7 +60,7 @@ def game_details(request, game_id):
     response = requests.get(url)
     game_data = response.json()
 
-    game = Game.objects.get_or_create(
+    Game.objects.get_or_create(
             name=game_data['name'],
             gameID=game_data['id']
         )
@@ -68,11 +69,19 @@ def game_details(request, game_id):
     genres = game_data['genres']
     developers = game_data['developers']
 
+    game = Game.objects.get(gameID=game_id)
+    reviews = Review.objects.filter(game=game)
+    reviews_avg = reviews.aggregate(Avg('rate'))
+    reviews_count = reviews.count()
+
     context = {
         'game_data': game_data,
         'platforms': platforms,
         'genres': genres,
         'developers': developers,
+        'reviews': reviews,
+        'reviews_avg': reviews_avg,
+        'reviews_count': reviews_count,
     }
 
     template = loader.get_template('game/game_details.html')
@@ -137,6 +146,7 @@ def remove_played(request, game_id):
 def rateGame(request, game_id):
     game = Game.objects.get(gameID=game_id)
     user = request.user
+    profile = Profile.objects.get(user=user)
 
     if request.method == 'POST':
         form = RateForm(request.POST)
@@ -144,7 +154,10 @@ def rateGame(request, game_id):
             rate = form.save(commit=False)
             rate.user = user
             rate.game = game
+            profile.to_play.remove(game)
+            profile.played.add(game)
             rate.save()
+            messages.success(request, 'Review saved')
 
             return HttpResponseRedirect(reverse('game_details', args=[game_id]))
 
