@@ -3,10 +3,11 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from profiles.models import Profile
-
-
 from .models import Game
+
+from .forms import RateForm
 
 import requests
 
@@ -130,3 +131,30 @@ def remove_played(request, game_id):
     messages.success(request, 'Game has been removed from list')
 
     return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+
+
+def rate(request, game_id):
+    game = Game.objects.get(gameID=game_id)
+    user = request.user
+
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.game = game
+            rate.save()
+
+            return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+
+    else:
+        form = RateForm()
+
+    template = loader.get_template('game/rate.html')
+
+    context = {
+        'form': form,
+        'game': game
+    }
+
+    return HttpResponse(template.render(context, request))

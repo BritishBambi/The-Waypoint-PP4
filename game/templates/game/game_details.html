@@ -42,7 +42,7 @@
             <p><b>Review Average</b> by <b>Review Count</b> people </p>
 
             <br>
-            <a href="#" class="waves-effect waves-light btn game-btn">Rate</a>
+            <a href="{% url 'rate' game_data.id %}" class="waves-effect waves-light btn game-btn">Rate</a>
             <a href="{% url 'add_toplay' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Play</a>
             <a href="{% url 'remove_toplay' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
             <a href="{% url 'add_toplayed' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Played</a>
