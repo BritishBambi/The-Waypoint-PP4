@@ -3,8 +3,10 @@ from game.models import Review, RATE_CHOICES
 
 
 class RateForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea(attrs={'class': 'materialize-textarea'}), required=False)
-    rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
+    text = forms.CharField(widget=forms.Textarea(
+        attrs={'class': 'materialize-textarea'}), required=False)
+    rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(
+        attrs={'class': 'form-display'}), required=True)
 
     class Meta:
         model = Review

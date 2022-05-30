@@ -2,4 +2,28 @@
 {% load static %}
 
 {% block content %}
+
+<!--   Icon Section   -->
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
+            <br>
+            <h3 class="card-title text-center ">Review for {{ game.name }}</h3>
+            <br>
+            <form method="post" action="" role="form">
+                {% csrf_token %}
+                <div class="input-field">
+                    {{ form.rate }}
+                </div>
+                <div class="input-field">
+                    {{ form.text }}
+                    <label for="textarea1">Review</label>
+                    <button type="submit" name="action" class="waves-effect waves-light btn">Rate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

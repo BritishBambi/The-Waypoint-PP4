@@ -133,7 +133,8 @@ def remove_played(request, game_id):
     return HttpResponseRedirect(reverse('game_details', args=[game_id]))
 
 
-def rate(request, game_id):
+@login_required
+def rateGame(request, game_id):
     game = Game.objects.get(gameID=game_id)
     user = request.user
 
@@ -154,7 +155,7 @@ def rate(request, game_id):
 
     context = {
         'form': form,
-        'game': game
+        'game': game,
     }
 
     return HttpResponse(template.render(context, request))
