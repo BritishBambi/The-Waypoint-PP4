@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2 center">
+            <h2>404 PAGE NOT FOUND</h2>
+        </div>
+        <a href="{% url 'home' %}" class="btn">Return Home</a>
+    </div>
+</div>
+{% endblock %}
