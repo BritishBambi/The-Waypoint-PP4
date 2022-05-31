@@ -2,5 +2,20 @@
 {% load static %}
 
 {% block content %}
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2 center">
+            {% if user.is_authenticated and user == profile.user %}
+            <form method="post" action="" role="form">
+                {% csrf_token %}
+                <h2>Are you sure you want to Delete your profile?</h2>
+                <p>This action cannot be reversed</p>
+                <button type="submit" name="action" class="waves-effect waves-light btn red center">Delete</button>
+            </form>
+            {% else %}
+            <h2>This is not your profile</h2>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

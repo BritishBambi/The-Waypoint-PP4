@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from .models import Profile
 
@@ -47,3 +48,20 @@ def editProfile(request, username):
         'profile': user_profile
     }
     return render(request, 'profiles/edit_profile.html', context)
+
+
+def deleteProfile(request, username):
+    user = get_object_or_404(User, username=username)
+    user_profile = Profile.objects.get(user=user)
+
+    if request.method == 'POST':
+        logout(request)
+        user.delete()
+        messages.success(request, 'Account deleted!')
+        return redirect(reverse('home'))
+
+    context = {
+        'profile': user_profile
+    }
+
+    return render(request, 'profiles/delete_profile.html', context)
