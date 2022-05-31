@@ -8,6 +8,9 @@
     <br><br>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
+            {% if review_exists == True %}
+            <h2 class="center">You Have Already Reviewed This Game!</h2>
+            {% else %}
             <br>
             <h3 class="card-title text-center ">Review for {{ game.name }}</h3>
             <br>
@@ -22,6 +25,7 @@
                     <button type="submit" name="action" class="waves-effect waves-light btn">Rate</button>
                 </div>
             </form>
+            {% endif %}
         </div>
     </div>
 </div>

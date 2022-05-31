@@ -1,12 +1,14 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from django.db.models import Avg
+from django.contrib.auth.models import User
 from profiles.models import Profile
 from .models import Game, Review
-from django.db.models import Avg
+
 
 from .forms import RateForm
 
@@ -74,6 +76,10 @@ def game_details(request, game_id):
     reviews_avg = reviews.aggregate(Avg('rate'))
     reviews_count = reviews.count()
 
+    user = request.user
+    if Review.objects.filter(user=user).exists():
+        review_exists = True
+
     context = {
         'game_data': game_data,
         'platforms': platforms,
@@ -82,6 +88,7 @@ def game_details(request, game_id):
         'reviews': reviews,
         'reviews_avg': reviews_avg,
         'reviews_count': reviews_count,
+        'review_exists': review_exists
     }
 
     template = loader.get_template('game/game_details.html')
@@ -148,6 +155,9 @@ def rateGame(request, game_id):
     user = request.user
     profile = Profile.objects.get(user=user)
 
+    if Review.objects.filter(user=user).exists():
+        review_exists = True
+
     if request.method == 'POST':
         form = RateForm(request.POST)
         if form.is_valid():
@@ -169,6 +179,22 @@ def rateGame(request, game_id):
     context = {
         'form': form,
         'game': game,
+        'review_exists': review_exists
     }
+
+    return HttpResponse(template.render(context, request))
+
+
+def view_review(request, username, game_id):
+    user = get_object_or_404(User, username=username)
+    game = Game.objects.get(gameID=game_id)
+    review = Review.objects.get(user=user, game=game)
+
+    context = {
+        'review': review,
+        'game': game,
+    }
+
+    template = loader.get_template('game/review.html')
 
     return HttpResponse(template.render(context, request))

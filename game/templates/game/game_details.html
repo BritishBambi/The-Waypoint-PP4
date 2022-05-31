@@ -43,7 +43,11 @@
 
 
             <br>
+            {% if review_exists == True %}
+            <p>You Have Already Rated This game!</p>
+            {% else %}
             <a href="{% url 'rate' game_data.id %}" class="waves-effect waves-light btn game-btn">Rate</a>
+            {% endif %}
             <a href="{% url 'add_toplay' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Play</a>
             <a href="{% url 'remove_toplay' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
             <a href="{% url 'add_toplayed' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to
@@ -70,7 +74,7 @@
                         <br>
                         <p>{{ review.text|truncatewords:80 }}</p>
                         <br>
-                        <a href="#" class="btn">View Review</a>
+                        <a href="{% url 'view_review' game_data.id review.user.username %}" class="btn">View Review</a>
                         <p class="secondary-content">{{ review.rate }} / 10</p>
                     </li>
                     {% endfor %}
