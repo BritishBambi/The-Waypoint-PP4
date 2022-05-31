@@ -67,7 +67,11 @@
                                 {{ review.user.profile.last_name }}</b></span>
                         <p>@{{ review.user.username }}</p>
                         <p>{{ review.date }}</p>
-                        <a href="#" class="secondary-content">{{ review.rate }} / 10</a>
+                        <br>
+                        <p>{{ review.text|truncatewords:80 }}</p>
+                        <br>
+                        <a href="#" class="btn">View Review</a>
+                        <p class="secondary-content">{{ review.rate }} / 10</p>
                     </li>
                     {% endfor %}
                 </ul>
