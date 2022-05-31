@@ -113,3 +113,23 @@ input {
   background-color: rgb(30, 34, 37);
   color: rgb(153, 169, 187);
 }
+
+input {
+  color: white;
+}
+
+.textinput {
+  color: white;
+}
+
+.textinput:focus {
+  color: white;
+}
+
+.emailinput {
+  color: white;
+}
+
+.emailinput:focus {
+  color: white;
+}
