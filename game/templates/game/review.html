@@ -1,6 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
+
+<div class="container">
+    <br><br>
+    <div class="row">
+        <div class="col-md-10 mt-3 offset-md-1">
+            <div class="card">
+                <div class="card-content">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture" class="circle">
+                            <span class="title"><b>{{ review.user.profile.first_name }}
+                                    {{ review.user.profile.last_name }}</b></span>
+                            <p>@{{ review.user.username }}</p>
+                            <p>{{ review.date }}</p>
+                            <br>
+                            <p>{{ review.text }}</p>
+                            <br>
+                            <p class="secondary-content">{{ review.rate }} / 10</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% if user.is_authenticated and user == review.user %}
+            <a href="#" class="btn">Edit Review</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+</div>
+
+
 {% endblock %}
