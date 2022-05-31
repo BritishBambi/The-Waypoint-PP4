@@ -57,6 +57,7 @@ def pagination(request, query, page_number):
     return HttpResponse(template.render(context, request))
 
 
+@login_required
 def game_details(request, game_id):
     url = 'https://rawg.io/api/games/' + game_id + '?key=c4a730f92484414c82505dab317c1720'
     response = requests.get(url)
