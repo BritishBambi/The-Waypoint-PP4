@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_authenticated and user == review.user %}
+<form method="post" action="" role="form">
+    {% csrf_token %}
+    <h2>Are you sure you want to Delete</h2>
+    <button type="submit" name="action" class="waves-effect waves-light btn red">Delete</button>
+</form>
+{% else %}
+<h2>This is not your review</h2>
+{% endif %}
+{% endblock content %}

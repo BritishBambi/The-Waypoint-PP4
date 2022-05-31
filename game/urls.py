@@ -11,5 +11,6 @@ urlpatterns = [
     path('game/<game_id>/addgametoplayed', views.add_to_played, name='add_toplayed'),
     path('game/<game_id>/removegameplayed', views.remove_played, name='remove_played'),
     path('game/<game_id>/rate', views.rateGame, name='rate'),
-    path('game/<game_id>/review/<username>', views.view_review, name='view_review')
+    path('game/<game_id>/review/<username>', views.view_review, name='view_review'),
+    path('game/<game_id>/review/<username>/delete', views.delete_review, name='delete_review')
 ]

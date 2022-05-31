@@ -25,7 +25,7 @@
                 </div>
             </div>
             {% if user.is_authenticated and user == review.user %}
-            <a href="#" class="btn">Edit Review</a>
+            <a href="{% url 'delete_review' review.game.gameID review.user.username %}" class="btn red">Delete Review</a>
             {% endif %}
         </div>
     </div>

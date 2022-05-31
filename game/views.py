@@ -75,10 +75,23 @@ def game_details(request, game_id):
     reviews = Review.objects.filter(game=game)
     reviews_avg = reviews.aggregate(Avg('rate'))
     reviews_count = reviews.count()
-
     user = request.user
-    if Review.objects.filter(user=user).exists():
+    profile = Profile.objects.get(user=user)
+
+    if profile.to_play.filter(gameID=game_id).exists():
+        to_play = True
+    else:
+        to_play = False
+
+    if profile.played.filter(gameID=game_id).exists():
+        played = True
+    else:
+        played = False
+
+    if Review.objects.filter(game=game, user=user).exists():
         review_exists = True
+    else:
+        review_exists = False
 
     context = {
         'game_data': game_data,
@@ -88,7 +101,9 @@ def game_details(request, game_id):
         'reviews': reviews,
         'reviews_avg': reviews_avg,
         'reviews_count': reviews_count,
-        'review_exists': review_exists
+        'review_exists': review_exists,
+        'to_play': to_play,
+        'played': played
     }
 
     template = loader.get_template('game/game_details.html')
@@ -155,8 +170,10 @@ def rateGame(request, game_id):
     user = request.user
     profile = Profile.objects.get(user=user)
 
-    if Review.objects.filter(user=user).exists():
+    if Review.objects.filter(game=game, user=user).exists():
         review_exists = True
+    else:
+        review_exists = False
 
     if request.method == 'POST':
         form = RateForm(request.POST)
@@ -198,3 +215,20 @@ def view_review(request, username, game_id):
     template = loader.get_template('game/review.html')
 
     return HttpResponse(template.render(context, request))
+
+
+def delete_review(request, username, game_id):
+    user = get_object_or_404(User, username=username)
+    game = Game.objects.get(gameID=game_id)
+    review = Review.objects.get(user=user, game=game)
+
+    if request.method == 'POST':
+        review.delete()
+        return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+
+    context = {
+        'review': review,
+        'game': game,
+    }
+
+    return render(request, 'game/delete_review.html', context)

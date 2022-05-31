@@ -48,11 +48,17 @@
             {% else %}
             <a href="{% url 'rate' game_data.id %}" class="waves-effect waves-light btn game-btn">Rate</a>
             {% endif %}
+            {% if to_play == False %}
             <a href="{% url 'add_toplay' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to Play</a>
-            <a href="{% url 'remove_toplay' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
+            {% else %}
+            <a href="{% url 'remove_toplay' game_data.id %}" class="waves-effect waves-light btn red game-btn">Remove from Games to Play</a>
+            {% endif %}
+            {% if played == False %}
             <a href="{% url 'add_toplayed' game_data.id %}" class="waves-effect waves-light btn game-btn">Add to
                 Played</a>
-            <a href="{% url 'remove_played' game_data.id %}" class="waves-effect waves-light btn red game-btn">X</a>
+            {% else %}
+            <a href="{% url 'remove_played' game_data.id %}" class="waves-effect waves-light btn red game-btn">Remove from Played</a>
+            {% endif %}
         </div>
     </div>
 </div>
