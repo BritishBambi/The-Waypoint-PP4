@@ -1,19 +1,17 @@
+import os
 from django.shortcuts import render, reverse, get_object_or_404
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
 from django.db.models import Avg
 from django.contrib.auth.models import User
+import requests
+
 from profiles.models import Profile
 from .models import Game, Review
 
-
 from .forms import RateForm
-
-import requests
-import os
 
 API_KEY = os.environ.get("API_KEY")
 
