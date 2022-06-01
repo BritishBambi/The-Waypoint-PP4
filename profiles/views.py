@@ -13,6 +13,12 @@ from .forms import UserUpdateForm, ProfileUpdateForm
 
 
 def profile(request, username):
+    """
+    Renders the user profile for the related username in the url,
+    this ensures any profle can be viewed by loading the template
+    and certain permissions can be requested in the template.
+
+    """
     user = get_object_or_404(User, username=username)
     user_profile = Profile.objects.get(user=user)
 
@@ -26,13 +32,21 @@ def profile(request, username):
 
 
 @login_required
-def editProfile(request, username):
+def edit_profile(request, username):
+    """
+    Renders the user and profile update form to the edit_profile page
+    and checks for a valid POST request to save the form information
+    to the database.
+
+    """
     user = get_object_or_404(User, username=username)
     user_profile = Profile.objects.get(user=user)
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile
+            )
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
@@ -50,7 +64,13 @@ def editProfile(request, username):
     return render(request, 'profiles/edit_profile.html', context)
 
 
-def deleteProfile(request, username):
+def delete_profile(request, username):
+    """
+    Checks for a valid post request to allow the user to
+    delete their own user account. Ensures this can only be
+    done by the correct user within the template.
+
+    """
     user = get_object_or_404(User, username=username)
     user_profile = Profile.objects.get(user=user)
 

@@ -13,17 +13,29 @@ from .models import Game, Review
 from .forms import RateForm
 
 import requests
+import os
+
+API_KEY = os.environ.get("API_KEY")
 
 
 def home(request):
+    """
+    A simple function to render the home screen for the site
+
+    """
     return render(request, 'index.html')
 
 
 def search(request):
+    """
+    Takes a search query from the search bar and makes a call to the API for the game requested
+    the game data for the query is then rendered into the search_results page
+
+    """
     query = request.GET.get('query')
 
     if query:
-        url = 'https://rawg.io/api/games?key=c4a730f92484414c82505dab317c1720&search=' + query + '&search_exact=1&ordering=-metacritic&page_size=12'
+        url = 'https://rawg.io/api/games?key=' + API_KEY + '&search=' + query + '&search_exact=1&ordering=-metacritic&page_size=12'
         response = requests.get(url)
         game_data = response.json()
 
@@ -41,7 +53,12 @@ def search(request):
 
 
 def pagination(request, query, page_number):
-    url = 'https://rawg.io/api/games?key=c4a730f92484414c82505dab317c1720&search=' + query + '&search_exact=1&ordering=-metacritic&page_size=12&page=' + str(page_number)
+    """
+    Renders the existing query again but adds the page_number variable on top
+    this allows more results to be displayed onto the results page
+
+    """
+    url = 'https://rawg.io/api/games?key=' + API_KEY + '&search=' + query + '&search_exact=1&ordering=-metacritic&page_size=12&page=' + str(page_number)
     response = requests.get(url)
     game_data = response.json()
     page_number = int(page_number) + 1
@@ -59,7 +76,14 @@ def pagination(request, query, page_number):
 
 @login_required
 def game_details(request, game_id):
-    url = 'https://rawg.io/api/games/' + game_id + '?key=c4a730f92484414c82505dab317c1720'
+    """
+    Makes a API request with the game_id imported from the search results page,
+    will then save the game name and api ID to the database for reference later.
+    Will make checks against the game existing already in profile lists to ensure
+    correct buttons are displayed on user view.
+
+    """
+    url = 'https://rawg.io/api/games/' + game_id + '?key=' + API_KEY
     response = requests.get(url)
     game_data = response.json()
 
@@ -114,6 +138,11 @@ def game_details(request, game_id):
 
 @login_required
 def add_to_play(request, game_id):
+    """
+    Button to add the game to the to_play profile list and redirect back to the game page.
+    Will only display if the game already doesnt exist in the list.
+
+    """
     game = Game.objects.get(gameID=game_id)
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -126,6 +155,11 @@ def add_to_play(request, game_id):
 
 @login_required
 def remove_to_play(request, game_id):
+    """
+    Button to remove the game from the to_play profile list and redirect back to the game page.
+    Will only display if the game already exists in the list.
+
+    """
     game = Game.objects.get(gameID=game_id)
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -138,6 +172,11 @@ def remove_to_play(request, game_id):
 
 @login_required()
 def add_to_played(request, game_id):
+    """
+    Button to add the game to the played profile list and redirect back to the game page.
+    Will only display if the game already doesnt exist in the list.
+
+    """
     game = Game.objects.get(gameID=game_id)
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -155,6 +194,11 @@ def add_to_played(request, game_id):
 
 @login_required
 def remove_played(request, game_id):
+    """
+    Button to remove the game from the played profile list and redirect back to the game page.
+    Will only display if the game already exists in the list.
+
+    """
     game = Game.objects.get(gameID=game_id)
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -167,6 +211,13 @@ def remove_played(request, game_id):
 
 @login_required
 def rateGame(request, game_id):
+    """
+    Checks for a valid POST request from the rate/review page
+    and saves the score and review to the Review model. Checks 
+    for an existing review to make sure the user cannot post
+    multiple. Will also remove the game from any proifle lists that are applicable. 
+
+    """
     game = Game.objects.get(gameID=game_id)
     user = request.user
     profile = Profile.objects.get(user=user)
@@ -204,6 +255,11 @@ def rateGame(request, game_id):
 
 
 def view_review(request, username, game_id):
+    """
+    A simple function to render an existing review with the context of
+    the review itself and the game that was reviewed.
+
+    """
     user = get_object_or_404(User, username=username)
     game = Game.objects.get(gameID=game_id)
     review = Review.objects.get(user=user, game=game)
@@ -218,7 +274,14 @@ def view_review(request, username, game_id):
     return HttpResponse(template.render(context, request))
 
 
+@login_required()
 def delete_review(request, username, game_id):
+    """
+    Checks for a valid POST request from the delete_review page
+    to simply delete the exisitng review model. The user will then
+    be returned to the game page.
+
+    """
     user = get_object_or_404(User, username=username)
     game = Game.objects.get(gameID=game_id)
     review = Review.objects.get(user=user, game=game)
