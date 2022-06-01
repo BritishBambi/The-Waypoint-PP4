@@ -95,8 +95,8 @@ WSGI_APPLICATION = 'waypoint.wsgi.application'
 if os.environ.get("DEVELOPMENT"):
     DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 else:
