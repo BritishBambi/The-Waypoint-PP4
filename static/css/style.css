@@ -134,3 +134,25 @@ input {
   color: white;
 }
 
+@media screen and (max-width:500px) {
+
+  .sidenav{
+    width: 60%;
+  }
+
+  #welcome-header{
+    font-size: 60px;
+  }
+
+  .info-block{
+    padding-top: 60px;
+  }
+
+  .info-text{
+    width: 90%;
+  }
+
+  .fa-magnifying-glass{
+    display: none;
+  }
+}
