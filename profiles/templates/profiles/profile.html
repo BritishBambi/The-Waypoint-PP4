@@ -10,7 +10,7 @@
         <div class="col-md-5">
             <br>
             {% if user.username.profile %}
-            <img class="img-fluid" src='{{ profile.profile_image.url }}' alt="user.username" style="width: 100%;">
+            <img class="img-fluid" src='{{ profile.profile_image.url }}' alt="{{ profile.user.username }}" style="width: 100%;">
             {% else %}
             <img class="img-fluid" src='{{ profile.profile_image.url }}' alt="default profile photo"
                 style="width: 100%;">

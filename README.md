@@ -8,6 +8,12 @@ My website is designed to allow user free reign to search and score games. The s
 
 ## UX
 
+### CRUD
+
+User Profile - Create, Read, Update, Delete
+Games - Create (on new game), Read
+Reviews - Create, Read, Delete
+
 ### Strategy Plane
 
 The Waypoint is intended to be a community hotspot for gamers to share and score their favourite games. The design of the site will use graphics and elements familiar to this community to make the site more welcoming.
@@ -88,7 +94,6 @@ The main font I selected for headings was Ubuntu and the body was Noto Serif.
 
 
 
-
 ### Database Schema
 
 ## Features
@@ -113,11 +118,33 @@ The game search is the main function of the site, the user is given a clear wind
 
 ![Screenshot of home page](assets/screenshots/search-screenshot.PNG "Home")
 
+USER STORY: Search Games:
+
+    - As a user, I want to search for games, so that I can view details relating to my query and find the game I'm looking for.
+
+Acceptance Criteria:
+Style search and search results page
+Make an API call when a query is given from the user
+Display query results in search results page
+
+The game search screen begins the first part of this User story by taking the query from the search bar based on the user entry. This will then be forwarded onto the search_results page. 
+
 Game Cards:
 
 The game card page will render the search query that the user has provided. For each search result a new card will be rendered. To prevent putting too many on one page a limit of 12 per page has been set to ensure the user does not also get overwhelemd with choice. To ensure more accurate searches an API setting has been made to order the games by metacritic rating. This means it is less likley to put user made or fan games high on the list when making a general query.
 
 ![Screenshot of home page](assets/screenshots/search-results-screenshot.PNG "Home")
+
+USER STORY: Search Games:
+
+    - As a user, I want to search for games, so that I can view details relating to my query and find the game I'm looking for.
+
+Acceptance Criteria:
+Style search and search results page
+Make an API call when a query is given from the user
+Display query results in search results page
+
+This fuffils the second part of the User Story to search a game. The search results page when loaded will take the query and pass it to the API url in order to render the specific user query. This will then all be rendered in a styled format using the game cards to turn the JSON information into easily viewable information for the user.
 
 Game Page:
 
@@ -125,7 +152,33 @@ The game page takes the ID of the game and matches it to the API to render infor
 
 ![Screenshot of home page](assets/screenshots/game-details-screenshot.PNG "Home")
 
+USER STORY: View Game
+
+    - As a User, I want to view a game page so that I can access all the available information.
+
+Acceptance Criteria:
+Create and style game page template
+Allow users to click on a featured game or search for a specific one
+Display all information on the game using the IGDB API.
+
+The Game Page fufils all this User Story by first having the styled game page displaying all the game information in a user friendly experience. Clicking on a featured game has become part of the Browse Games user story and will be moved to a future update. However the user is able to search for a specific game and have the information rendered by passing a further query to the API from the search results page. The IGDB API was also changed for thhe RAWG.io API, this works the same however and still displays all the intended information for the User.
+
 Reviews: 
+
+The Review section under a game details page will display the user reviews for the sellected game. It will display a limited preview to make sure the page is not taken up by lengthy reviews and instead opts the user to click a "View Review" button which will show just the specified review in full detail. Here the review author is given the option to delete their review if they ever want to make a new review or if they are unhappy with the old one.
+
+![Screenshot of game review](assets/screenshots/review-screenshot.PNG "Review preview")
+
+USER STORY: Review Game
+
+    - As a User, I want to review a game so that I can have my public opinion shown on a game page.
+
+Acceptance Criteria:
+Create and style a review form
+Save the review to the database with a connection to the game ID that matches it.
+Display review data on game page
+
+All this criteria is met, a review form is collected and stored into the database which is then rendered onto the game details page for the gameID that matches the gameID from the review. These two together ensure the correct review is on the matching game. This ensures that users can easily share their opinions and be able to find them in an easy to understand manor.
 
 Profile Page:
 
@@ -139,8 +192,28 @@ The edit profile page allows easy acccess for the user to update profile informa
 
 ![Screenshot of home page](assets/screenshots/edit-profile-screenshot.PNG "Home")
 
+USER STORY: Edit Profile
+
+    - As a user, I want to edit my profile so that I can update it with up to date and correct information.
+
+Acceptance Criteria:
+Create and style edit profile page
+Create a function to update database with new user information
+
+Edit profile is a simple user need and is met just as easily. A form is collected and passed through the view to update the database and user profile page with the new information provded by the user
+
 
 ## Future Features
+
+For the furture of the site I have several updates that are planned. Either I did not have enough time to implement them or the amount of knowledge required to make them correctly.
+
+### Browse Games
+
+The main feature that I have planned is for a browse page easily accessible from the Navbar and home page. This page would render a list of recently modified and popular games from the API. The intent of this feature would be to make finding new games accesible and easy to users. Here it would be easier to contribute to active discussions and find games that have been reviewed by other users. This would make use of inbuilt API URL queries to render popular games from a certain platform/time period or genre with ease. 
+
+### Review Comments/Likes
+
+This would allow further input and interaction from Users. Forms would be created so that comments would be left under reviews that could be liked or disliked to reflect public opinion. This would add a deeper user meaning to reviews and would inspire discussion on Reviews themselves rather than the game in general. This would be an ideal feature to add next into the project.
 
 ## Testing
 
@@ -154,6 +227,7 @@ The edit profile page allows easy acccess for the user to update profile informa
     - Bootstrap was used for general layout and spacing requirements for the site.
 
 - Materialize CSS
+    - Materialize was used to style certain elemetns with matching style across the site.
 
 - Django
     - Django was used as the main python framework in the development of this project
@@ -189,17 +263,64 @@ The edit profile page allows easy acccess for the user to update profile informa
     - Was used as the cloud based platform to deploy the site on
 
 - Heroku PostgreSQL
+    - Was used as the live database.
 
 - RAWG API
     - Was the API used to call and render game details
 
 ## Deployment
 
+The site was deployed via Heroku
+
 ### Project Deployment
+
+The steps to deploy this project were simple and are as followed: 
+- Sign up / Log in to Heroku
+- From the main Heroku Dashboard page select 'New' and then 'Create New App'
+- Give the project a name and select a suitable region, then select create app. The name for the app must be unique.
+- This will create the app within Heroku and bring you to the deploy tab. From the submenu at the top, navigate to the resources tab.
+- Add the database to the app, in the add-ons section search for 'Heroku Postgres', select the package that appears and add 'Heroku Postgres' as the database
+- Navigate to the setting tab, within the config vars section copy the DATABASE_URL to the clipboard for use in the Django configuration.
+- Within the django app repository create a new file called env.py - within this file import the os library and set the environment variable for the DATABASE_URL pasting in the address copied from Heroku. - - The line should appear as os.environ["DATABASE_URL"]= "Paste the link in here"
+- Add a secret key to the app using os.environ["SECRET_KEY"] = "your secret key goes here"
+- Add the secret key just created to the Heroku Config Vars as SECRET_KEY for the KEY value and the secret key value you created as the VALUE
+- In the settings.py file within the django app, import Path from pathlib, import os and import dj_database_url
+- insert the line if os.path.isfile("env.py"): import env
+- remove the insecure secret key that django has in the settings file by default and replace it with SECRET_KEY = os.environ.get('SECRET_KEY')
+- replace the databases section with DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))} ensure the correct indentation for python is used.
+- In the terminal migrate the models over to the new database connection
+- Navigate in a browser to cloudinary, log in, or create an account and log in.
+- From the dashboard - copy the CLOUDINARY_URL to the clipboard
+- in the env.py file created earlier - add os.environ["CLOUDINARY_URL"] = "paste in the Url copied to the clipboard here"
+- In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
+- Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars
+- this key value pair must be removed prior to final deployment
+- Add the cloudinary libraries to the list of installed apps, the order they are inserted is important, 'cloudinary_storage' goes above 'django.contrib.staitcfiles' and 'cloudinary' goes below it.
+- in the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+- Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+- Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
+- Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
+- In your code editor, create three new top level folders, media, static, templates
+- Create a new file on the top level directory - Procfile
+- Within the Procfile add the code - web: guincorn PROJECT_NAME.wsgi
+- In the terminal, add the changed files, commit and push to GitHub
+- In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
+- Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
 
 ### Clone Repo
 
+Creating a clone enables you to make a copy of the repository at that point in time - this lets you run a copy of the project locally: This can be done by:
+
+- Navigating to https://github.com/BritishBambi/The-Waypoint-PP4
+- Clicking on the arrow on the green code button at the top of the list of files
+- Selecting the clone by https option and copy the URL it provides to the clipboard
+- Navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
+- Type 'git clone' and paste the https link you copied from github
+- Press enter and git will clone the repository to your local machine
+
 ### Fork Repo
+
+By forking the GitHub Repository you can make a copy of the original repository to view or change without it effecting the original repository This can be done by logging into GitHub or creating an account.  Locate the repository at https://github.com/BritishBambi/The-Waypoint-PP4 . At the top of the repository, on the right side of the page, select "Fork" from the buttons available. A copy of the repository should now be created in your own repository.
 
 
 ## Bugs
@@ -210,7 +331,7 @@ Part way through development my access to the gitpod workspaces was limited and 
 
 ## Acknowledgments
 
-Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) 
+Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) for providing the information to populate my pages and datbase with API content.
 
 ## Credits
 
