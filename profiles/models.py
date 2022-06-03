@@ -10,7 +10,8 @@ default_img = 'https://res.cloudinary.com/jojocloudci/image/upload/v1653441917/d
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=False, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                blank=False, related_name='profile')
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
     bio = models.CharField(max_length=700, null=True, blank=True)
