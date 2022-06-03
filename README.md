@@ -329,6 +329,12 @@ During development I encountered an issue where my workspace was not correctly b
 
 Part way through development my access to the gitpod workspaces was limited and I was unable to work on my project for a few days. Fortunatly this was fixed so I could continue working on my project.
 
+### Existing Bugs
+
+When an email is sent from the site for allauth purposes emails can take up to 5 minutes to arrive, making for a slow wait time for the user to get actually logged in. This could maybe be solved with a new email smpt host over the current choice.
+
+When a user would update their account it would orignally redirect them back to the user profile page. However if the user updated their username then the orignal user profile link would break and provide a 404. To come up with a temp fix to this solution the form will redirect users back to the home page to avoid any error pages.
+
 ## Acknowledgments
 
 Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) for providing the information to populate my pages and datbase with API content.
