@@ -72,10 +72,14 @@
                 <ul class="collection">
                     {% for review in reviews %}
                     <li class="collection-item avatar">
-                        <img src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture" class="circle">
+                        <a href="{% url 'profile' review.user.username %}"><img
+                                src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture"
+                                class="circle"></a>
                         <span class="title"><b>{{ review.user.profile.first_name }}
                                 {{ review.user.profile.last_name }}</b></span>
-                        <p>@{{ review.user.username }}</p>
+                        <a href="{% url 'profile' review.user.username %}">
+                            <p>@{{ review.user.username }}</p>
+                        </a>
                         <p>{{ review.date }}</p>
                         <br>
                         <p>{{ review.text|truncatewords:80 }}</p>
