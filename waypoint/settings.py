@@ -162,6 +162,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 if os.environ.get("DEVLOPMENT"):
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     ACCOUNT_EMAIL_REQUIRED = False
@@ -177,6 +184,6 @@ else:
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_API_KEY')
 DEFAULT_FROM_EMAIL = "thewaypoint@josefjakubiak.co.uk"
