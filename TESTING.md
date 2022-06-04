@@ -40,7 +40,7 @@ Due to there only being a very small amount of Javascript in the project, there 
 
 During production, the main layout of the site and most of the styling was taken care of by bootstrap and materialize. However, a reasonable amount of custom CSS was still required. This was mainly used to control the colour of certain elements, or rezise them for mobile devices. I tested the site using the Jigsaw CSS Validator service which returned no errors. I received only one warning relating to imported style sheets. If the site was checked using the URL method then the validator would return back hundreds of warnings due to the nature  of imported style sheets.
 
-## Test Case 04 - Manual HTML Testing
+## Test Case 04 - Manual HTML Testing - Unregistered User
 
 Due to my project relying on Django templates to render everything to the page, the option to copy and paste code online to validate is not an option. To circumvent this I will be going through each element of the website as a registered and unregistered user to ensure that everything works as intended. To ensure everything is covered I will be using a test schedule similar to my Python validation to make sure no step or site elemenet is skipped over.
 
@@ -61,3 +61,19 @@ I then tested the game search mechanic on its own to ensure that all features an
 ![Screenshot of Unregistered User Sign up/Log in](assets/screenshots/testing/04c-testing.PNG "HTML Validation")
 
 I ensured to test the user registration process multiple times with different steps to ensure that incorrect fields and errors would display as intended in case of a user mistake. Most of this came from testing invalid user input on the sign up page. This ensures that the user can only type valid inputs into the email, username and password fields. Similarlly this also helped to test the smtp server used to send emails to users. The first email sent arrived into my junk mail folder on outlook. However using a different gmail account had the email appear in my inbox as hoped. All the email formatting and links were correct and fast to load for the user. The sign up process has been made fast and efficent using allauth and is handled for me with ease. I also used these tests on the sign in process to ensure emails and errors would work when requested by the user.
+
+## Test Case 05 - Manual HTML Testing - Registered User
+
+As more of the site is made available to a registered user I felt that it was important to seperate the two cases into their own catagories. This would mean that extensive testing could be performed across both groups efficiently. 
+
+### 05a - Registered Navigation
+
+![Screenshot of Registered User Navigation](assets/screenshots/testing/05a-testing.PNG "HTML Validation")
+
+Almost the same as unregistered navigation, when a registered user navigates the site the key difference is with the profile dropdown menu. Now when the user clicks on it 2 new options are presented and all the links in here work as intended. The extra testing comes in the edit profile function which will be done in the Registered Auth testing.
+
+### 05b - Registered Game Search/Review
+
+![Screenshot of Registered Game search](assets/screenshots/testing/05b-testing.PNG "HTML Validation")
+
+With game searching being the primary draw and function to the site there were many variables to test against to ensure that everything worked correctly and that users were authorized to do certain actions. There were several buttons that have relationships with the profile model such as the game itself and the reviews. These all work in tangent to provide information across different areas of the site. When a game is reviewed the review is stored to the game, which is then also stored to the user profile. This also allows users to understand easily who wrote what review and be able to find their profile with ease. I also ensured that any unauthorized action such as deleting someone elses review would have defences in place and a warning to the user.
