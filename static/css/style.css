@@ -132,6 +132,30 @@ input {
   color: white;
 }
 
+button.btn {
+  color: black;
+}
+
+a.btn {
+  color: black;
+}
+
+a.btn-large{
+  color: black;
+}
+
+#profile-link {
+  color: white;
+}
+
+small {
+  color: white;
+}
+
+.text-muted{
+  color: rgb(153, 169, 187) !important;
+}
+
 @media screen and (max-width:500px) {
 
   .sidenav{

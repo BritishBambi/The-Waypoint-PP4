@@ -77,7 +77,7 @@
                                 class="circle"></a>
                         <span class="title"><b>{{ review.user.profile.first_name }}
                                 {{ review.user.profile.last_name }}</b></span>
-                        <a href="{% url 'profile' review.user.username %}">
+                        <a href="{% url 'profile' review.user.username %}" class="white-text">
                             <p>@{{ review.user.username }}</p>
                         </a>
                         <p>{{ review.date }}</p>
