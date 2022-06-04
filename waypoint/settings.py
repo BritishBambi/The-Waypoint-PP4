@@ -169,6 +169,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# Email Verification Settings
+
 if os.environ.get("DEVLOPMENT"):
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     ACCOUNT_EMAIL_REQUIRED = False
@@ -180,6 +182,8 @@ else:
     ACCOUNT_EMAIL_REQUIRED = True
     ACCOUNT_AUTHENTICATION_METHOD = 'email'
     ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+# Email smtp settings in order to send emails from the site
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587

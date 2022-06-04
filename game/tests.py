@@ -178,7 +178,7 @@ class TestViews(TestCase):
 
         response = self.client.post('/game/28589/rate')
         self.assertTemplateUsed(response, 'game/rate.html')
-        self.assertTrue(review.game.gameID=="28589")
+        self.assertTrue(review.game.gameID == "28589")
 
     def test_review_page(self):
         """ TC11 - Test reviews can be rendered on their own page """

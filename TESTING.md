@@ -85,4 +85,8 @@ With game searching being the primary draw and function to the site there were m
 This is the area of the site that required the most amount of testing. This was mainly due to the fact that users would have to be authorized to perform certain actions and a lot of elements could be changed. Through testing I was able to ensure that users could only make changes to their own account. Similar to how game review deletion worked, users are given warnings when trying to perform unauthorized actions by changing the URL to match a different user. This ensures the saftey of user accounts and that changes cannot be made on their behalf. All the profile forms and elements rendered and updated the database exactly as expected and was succesful. From the testing I was able to discover a 500 Internal server error that occureed when trying to delete a primary email. I was able to fix this issue by creating a toast specifically for erorrs.
 
 
-## 
+## Automated Testing
+
+![Screenshot of Automated Testing Report](assets/screenshots/testing/automated-testing.PNG "Automatic Testing")
+
+To further test the elements of my site I used some automated testing to ensure that items could be created and saved into the database as well as retrieved. This was also very useful to ensure that all of my Views were opperating as expected. Through my testing I was able to get a total of 90% coverage across the entire website. The remaining 10% has been covered through the manual testing I achieved in this document. The main part of my views I was not auto testing was any forms. This included Edit Profile, Delete profile and Making a user review. The rest of my links have all been checked against using this automatic testing.

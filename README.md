@@ -53,6 +53,20 @@ The Waypoint is intended to be a community hotspot for gamers to share and score
         - Acceptance Criteria: Create and style profile.html page. Display current profile data from the database.
     - User Story - Edit Profile: As a user, I want to edit my profile so that I can update it with up to date and correct information.
         - Acceptance Criteria: Create and style edit profile page. Create a function to update database with new user information
+    - User Story - Delete Profile: As a user, I want to Delete my profile so that I can remove my information and profile data.
+        - Acceptance Criteria: Create Delete functionality that is only viewable ONLY to the user who owns the profile and create a confirmation message to make sure the user does not delete it by accident
+4. Game Epic
+    - User Story - Review Game: As a User, I want to review a game so that I can have my public opinion shown on a game page.
+        - Acceptance Criteria: Create and style a review form. Save the review to the database with a connection to the game ID that matches it. Display review data on game page
+    - User Story - Score Game: As a User, I want to score a game so that I can compliment my review with a score, or avoid having to write a full review on a game.
+        - Acceptance Criteria: Create a score form that users can interact with. Save score data to database with the game ID to match. Display score data on a game page from the user that submitted it
+    - User Story - Add games to profile: As a user, I want to add games to my profile, so that I can track games that I have played or want to play.
+        - Acceptance Criteria: Style game details and profile. Create a function to add a game to the user's profile database and render on profile page
+5. Site Owner Epic
+    - User Story: As a site owner, I want to have error pages on my site, so that users have a fluid experience navigating the site.
+        - Acceptance Criteria: Create and style basic error pages
+    - User Story: Responsive Design: As a Developer, I want my site to have a responsive design so that the site can be accessed across a range of devices without loss of content or usability
+        - Acceptance Criteria: Any pages or elements are resized/modified to display correctly across all devices
 
 ### Skeleton Plane
 
@@ -94,6 +108,8 @@ The main font I selected for headings was Ubuntu and the body was Noto Serif.
 
 
 ### Database Schema
+
+![Screenshot of database](assets/screenshots/database-screenshot.PNG "Database")
 
 ## Features
 
@@ -215,6 +231,8 @@ The main feature that I have planned is for a browse page easily accessible from
 This would allow further input and interaction from Users. Forms would be created so that comments would be left under reviews that could be liked or disliked to reflect public opinion. This would add a deeper user meaning to reviews and would inspire discussion on Reviews themselves rather than the game in general. This would be an ideal feature to add next into the project.
 
 ## Testing
+
+A mix of Manual and Automated testing was used in this project to make sure every element of the site worked in the intended manor.
 
 A full detailed breakdown of the testing procedures and methodology can be found in the testing.md file [here](TESTING.md)
 
@@ -340,7 +358,14 @@ When a user would update their account it would orignally redirect them back to 
 ## Acknowledgments
 
 Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) for providing the information to populate my pages and datbase with API content.
+Thanks to the [alluath](https://django-allauth.readthedocs.io/en/latest/faq.html) documentation whichh was used to figure out email servers during development.
+Thanks to the [django](https://docs.djangoproject.com/en/4.0/) docs which were also used as a step by step while going through the project to ensure everything was set up correctly.
+Thanks to [Corey Schafer](https://youtu.be/FdVuKt_iuSI) for the tutorial to get automatic profile creation and updating working as intended for my project.
+Thanks to My mentor Daisy McGirr for believing in me through the project and for answering the questions I had throughout.
 
 ## Credits
 
 Credit to [Julie Ucha](https://www.julieucha.com) for designing the logo and icon for the site.
+Credit to [Rawg](https://rawg.io) API for allowing the project to exist through the game requests and image display.
+
+All images of games are either taken from the API or uploaded publicly online, the site is made for educational purposes only and does not own any of the games featured on the site.
