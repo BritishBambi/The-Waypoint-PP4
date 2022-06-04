@@ -125,13 +125,13 @@ Nav Bar: The nav bar has a simple design that makes it easy for the user to find
 
 On mobile the nav bar will squish down into a "burger bun" icon which when pressed will present the user with the nav bar options
 
-![Screenshot of home page](assets/screenshots/navbar-mobile-screenshot.PNG "Home")
+![Screenshot of mobile nav bar](assets/screenshots/navbar-mobile-screenshot.PNG "Nav Bar Mobile")
 
 Game Search:
 
 The game search is the main function of the site, the user is given a clear window as to where the search bar is and how to go through with the search. Whatever the user types will be saved as a query to render the search results page with.
 
-![Screenshot of home page](assets/screenshots/search-screenshot.PNG "Home")
+![Screenshot of search page](assets/screenshots/search-screenshot.PNG "Search")
 
 USER STORY: Search Games:
 
@@ -148,7 +148,7 @@ Game Cards:
 
 The game card page will render the search query that the user has provided. For each search result a new card will be rendered. To prevent putting too many on one page a limit of 12 per page has been set to ensure the user does not also get overwhelemd with choice. To ensure more accurate searches an API setting has been made to order the games by metacritic rating. This means it is less likley to put user made or fan games high on the list when making a general query.
 
-![Screenshot of home page](assets/screenshots/search-results-screenshot.PNG "Home")
+![Screenshot of search results](assets/screenshots/search-results-screenshot.PNG "Search Results")
 
 USER STORY: Search Games:
 
@@ -165,7 +165,7 @@ Game Page:
 
 The game page takes the ID of the game and matches it to the API to render information about it clearly to the user. It has an image card to match the game art to the descripttion. This is more likley to give the user confirmation that they have found the correct game. Similarly the information on the side of the image is also detailed with the game description, release date, platforms, genres and developers. This gives the user all the quick information they could want to find on a game.
 
-![Screenshot of home page](assets/screenshots/game-details-screenshot.PNG "Home")
+![Screenshot of game page](assets/screenshots/game-details-screenshot.PNG "Game")
 
 USER STORY: View Game
 
@@ -177,6 +177,16 @@ Allow users to click on a featured game or search for a specific one
 Display all information on the game using the IGDB API.
 
 The Game Page fufils all this User Story by first having the styled game page displaying all the game information in a user friendly experience. Clicking on a featured game has become part of the Browse Games user story and will be moved to a future update. However the user is able to search for a specific game and have the information rendered by passing a further query to the API from the search results page. The IGDB API was also changed for thhe RAWG.io API, this works the same however and still displays all the intended information for the User.
+
+USER STORY: Add games to profile
+
+    - As a user, I want to add games to my profile, so that I can track games that I have played or want to play.
+
+Acceptance Criteria: 
+Style game details and profile. 
+Create a function to add a game to the user's profile database and render on profile page
+
+The game page also features two buttons both with functionality to add a certain game to the users profile lists. This is done on the backend in the database but is also rendered in a list on the user profile page. The buttons will also change colour and text depending on the games existence in any of the two lists.
 
 Reviews: 
 
@@ -193,13 +203,46 @@ Create and style a review form
 Save the review to the database with a connection to the game ID that matches it.
 Display review data on game page
 
-All this criteria is met, a review form is collected and stored into the database which is then rendered onto the game details page for the gameID that matches the gameID from the review. These two together ensure the correct review is on the matching game. This ensures that users can easily share their opinions and be able to find them in an easy to understand manor.
+USER STORY: Score Game
+
+    - As a User, I want to score a game so that I can compliment my review with a score, or avoid having to write a full review on a game.
+
+Acceptance Criteria: 
+Create a score form that users can interact with.
+Save score data to database with the game ID to match.
+Display score data on a game page from the user that submitted it
+
+All this criteria is met, a review form is collected and stored into the database which is then rendered onto the game details page for the gameID that matches the gameID from the review. These two together ensure the correct review is on the matching game. This ensures that users can easily share their opinions and be able to find them in an easy to understand manor. A score and a text form input is saved seperatley meaning they can exist on their own or with each other. This means that a user can just make a score on a game without needing to make a full review.
+
+User Accounts:
+
+A new user is able to create a user account with ease thanks to the Allauth package installed on the website. This handles everything from Registering to email forms and password resets. This allows the user to easily manage all their own account details through easy to understand and fully functional existing forms.
+
+![Screenshot of user sign up](assets/screenshots/user-screenshot.PNG "Sign up form")
+
+USER STORY: Create Account
+
+    - As a user, I want to create an account, so that I can log in to the site using a username and password.
+
+Acceptance Criteria:
+Allauth set up with working links
+Related sign up pages styled and accessible to user
 
 Profile Page:
 
 Whenever a user account is created a Profile page is also generated for the user. From here the user can display their profile picture in a similar design to the game details to have uniform design. Similarly there is a section next to the image that a user can fill in with personal details to personalize their profile page. If the user is signed in and viewing their own page they will be able to see the Edit Profile button.
 
 ![Screenshot of home page](assets/screenshots/profile-screenshot.PNG "Home")
+
+USER STORY: Create Profile
+
+    - As a User, I want to be able to create a profile, so that I can share information about my self and present it on a profile page
+
+Acceptance Criteria
+Create and style profile page
+Store user data in database
+
+The signal used to create a profile on creation of user allows every user to have their own profile page which will relate to the database and display information in an accesible manor.
 
 Edit Profile:
 
@@ -216,6 +259,24 @@ Create and style edit profile page
 Create a function to update database with new user information
 
 Edit profile is a simple user need and is met just as easily. A form is collected and passed through the view to update the database and user profile page with the new information provded by the user
+
+Delete Profile:
+
+A simple function was created to allow users easy access to delete their user account/profile. This would then cascade and delete all content relating to the account. Inlcuding reviews and saved game lists.
+
+![Screenshot of delete profile page](assets/screenshots/delete-profile-screenshot.PNG "Delete Profile")
+
+USER STORY: Delete Profile
+
+    - As a user, I want to Delete my profile so that I can remove my information and profile data.
+
+Acceptance Criteria:
+Create and style Delete Confirmation page
+Create Delete functionality that is only viewable ONLY to the user who owns the profile
+Create a confirmation message to make sure the user does not delete it by accident
+
+This simple user need has been met with ease. As detailed in my testing, it can only be accessed by the authorized user and provides a user confirmation to make sure it is not done by accident.
+
 
 
 ## Future Features
