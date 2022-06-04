@@ -10,9 +10,9 @@ My website is designed to allow user free reign to search and score games. The s
 
 ### CRUD
 
-User Profile - Create, Read, Update, Delete
-Games - Create (on new game), Read
-Reviews - Create, Read, Delete
+- User Profile - Create, Read, Update, Delete
+- Games - Create (on new game), Read
+- Reviews - Create, Read, Delete
 
 ### Strategy Plane
 
@@ -91,7 +91,6 @@ The main font I selected for headings was Ubuntu and the body was Noto Serif.
 - Colours
 
 ![Screenshot of colours](assets/screenshots/colours.png "Site Colours")
-
 
 
 ### Database Schema
@@ -217,6 +216,7 @@ This would allow further input and interaction from Users. Forms would be create
 
 ## Testing
 
+A full detailed breakdown of the testing procedures and methodology can be found in the testing.md file [here](TESTING.md)
 
 ## Technologies
 
@@ -238,6 +238,7 @@ This would allow further input and interaction from Users. Forms would be create
     - asgiref==3.5.1
     - async-timeout==4.0.2
     - cloudinary==1.29.0
+    - coverage==6.4
     - dj-database-url==0.5.0
     - dj3-cloudinary-storage==0.0.6
     - Django==3.2.13
@@ -257,6 +258,7 @@ This would allow further input and interaction from Users. Forms would be create
     - pytz==2022.1
     - requests-oauthlib==1.3.1
     - sqlparse==0.4.2
+    - whitenoise==6.1.0
     - yarl==1.7.2
 
 - Heroku

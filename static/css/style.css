@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   background-color: rgb(20, 24, 28);
   color: rgb(153, 169, 187);
-  font-family: Noto Serif;
+  font-family: "Noto Serif";
 }
 
 .footer-color {
