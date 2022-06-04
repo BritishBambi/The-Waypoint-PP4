@@ -3,7 +3,8 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 import requests
 from profiles.models import Profile
-from .models import Game
+from .models import Game, Review
+from .forms import RateForm 
 
 API_KEY = os.environ.get("API_KEY")
 
@@ -18,6 +19,15 @@ class TestViews(TestCase):
 
     TC1 - Test Home/Index
     TC2 - Test Search Page
+    TC3 - Test Search Results Page
+    TC4 - Test Pagination
+    TC5 - Test Game Details Page
+    TC6 - Test Add to play
+    TC7 - Test Remove from Play
+    TC8 - Test Add to played
+    TC9 - Test Removed from played
+    TC10 - Test Rate Page
+    TC11 - Test Review Page
     """
     def setUp(self):
         """ Create test login user and create Profile entry"""
@@ -145,3 +155,51 @@ class TestViews(TestCase):
         response = self.client.get('/game/28589/removegameplayed')
         self.assertEqual(response.status_code, 302)
         self.assertFalse(profile.played.filter(gameID="28589"))
+
+    def test_rate_page(self):
+        """ TC10 - Test reviews can be saved and retrieved """
+        url = 'https://rawg.io/api/games/28589?key=' + API_KEY
+        api_response = requests.get(url)
+        game_data = api_response.json()
+        user = self.user
+        Game.objects.get_or_create(
+            name=game_data['name'],
+            gameID=game_data['id']
+        )
+        game = Game.objects.get(gameID="28589")
+
+        Review.objects.get_or_create(
+            user=self.user,
+            game=game,
+            rate='3'
+        )
+
+        review = Review.objects.get(user=user, game=game)
+
+        response = self.client.post('/game/28589/rate')
+        self.assertTemplateUsed(response, 'game/rate.html')
+        self.assertTrue(review.game.gameID=="28589")
+
+    def test_review_page(self):
+        """ TC11 - Test reviews can be rendered on their own page """
+        url = 'https://rawg.io/api/games/28589?key=' + API_KEY
+        api_response = requests.get(url)
+        game_data = api_response.json()
+        user = self.user
+        Game.objects.get_or_create(
+            name=game_data['name'],
+            gameID=game_data['id']
+        )
+        game = Game.objects.get(gameID="28589")
+
+        Review.objects.get_or_create(
+            user=self.user,
+            game=game,
+            rate='3'
+        )
+
+        review = Review.objects.get(user=user, game=game)
+
+        response = self.client.post('/game/28589/review/jojo')
+        self.assertTemplateUsed(response, 'game/review.html')
+        self.assertTrue(review.game.gameID == "28589")

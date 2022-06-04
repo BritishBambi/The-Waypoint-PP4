@@ -77,3 +77,12 @@ Almost the same as unregistered navigation, when a registered user navigates the
 ![Screenshot of Registered Game search](assets/screenshots/testing/05b-testing.PNG "HTML Validation")
 
 With game searching being the primary draw and function to the site there were many variables to test against to ensure that everything worked correctly and that users were authorized to do certain actions. There were several buttons that have relationships with the profile model such as the game itself and the reviews. These all work in tangent to provide information across different areas of the site. When a game is reviewed the review is stored to the game, which is then also stored to the user profile. This also allows users to understand easily who wrote what review and be able to find their profile with ease. I also ensured that any unauthorized action such as deleting someone elses review would have defences in place and a warning to the user.
+
+### 05c - Registered Allauth Testing
+
+![Screenshot of Registered User Profile](assets/screenshots/testing/05c-testing.PNG "HTML Validation")
+
+This is the area of the site that required the most amount of testing. This was mainly due to the fact that users would have to be authorized to perform certain actions and a lot of elements could be changed. Through testing I was able to ensure that users could only make changes to their own account. Similar to how game review deletion worked, users are given warnings when trying to perform unauthorized actions by changing the URL to match a different user. This ensures the saftey of user accounts and that changes cannot be made on their behalf. All the profile forms and elements rendered and updated the database exactly as expected and was succesful. From the testing I was able to discover a 500 Internal server error that occureed when trying to delete a primary email. I was able to fix this issue by creating a toast specifically for erorrs.
+
+
+## 
