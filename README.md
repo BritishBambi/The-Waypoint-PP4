@@ -108,8 +108,14 @@ The main font I selected for headings was Ubuntu and the body was Noto Serif.
 
 ![Screenshot of colours](assets/screenshots/colours.png "Site Colours")
 
+I opted for a darker colour scheme with some light blue text elements that would help in making a majority of game cards stand out against the backdrop. This type of colour scheme was inspired by sites like Letterboxd, RAWG.io and Twitter(Dark mode)
+
 
 ### Database Schema
+
+I knew going into the project that custom models were going to be required when building the site. The intention was always to use Allauth to handle all the user authentication and I would use the User model in my Profile and Review models. This would help keep all user created elmements together and assosiated with the correct user at all times. Weather this was through user requests or by assosiating data from the Review -> Profile -> User. The Game model could then be related back to the Profile and Review model to keep reviews synced up with the correct user and game simultaneously.
+
+I was able to get the screenshot of my database models using [DBVisualizer](https://www.dbvis.com)
 
 ![Screenshot of database](assets/screenshots/database-screenshot.PNG "Database")
 
@@ -353,9 +359,18 @@ A full detailed breakdown of the testing procedures and methodology can be found
 - RAWG API
     - Was the API used to call and render game details
 
+- Git
+    - Was utilised for version control and transferring files between the code editor and the repository
+
+- Github
+    - Was used for storing and updating the project files
+
+- Balsamiq
+    - Was used to design and draw wireframes for the website
+
 ## Deployment
 
-The site was deployed via Heroku
+The site was deployed via Heroku, here is the [Link to Deployed site](https://the-waypoint.herokuapp.com)
 
 ### Project Deployment
 
@@ -416,21 +431,25 @@ Part way through development my access to the gitpod workspaces was limited and 
 
 ### Existing Bugs
 
-When an email is sent from the site for allauth purposes emails can take up to 5 minutes to arrive, making for a slow wait time for the user to get actually logged in. This could maybe be solved with a new email smpt host over the current choice.
+When an email is sent from the site for allauth purposes emails can a few minutes to arrive, making for a slow wait time for the user to get actually logged in. This could maybe be solved with a new email smpt host over the current choice.
 
 When a user would update their account it would orignally redirect them back to the user profile page. However if the user updated their username then the orignal user profile link would break and provide a 404. To come up with a temp fix to this solution the form will redirect users back to the home page to avoid any error pages.
 
+When a game only has one review the text will appear to say "Reviewed by 1 people" which is incorrect grammar. This is only incorrect for 1 review as the correct grammar is present for "0 People" and "2, 3, ect. People" Any attempts to try and fix this in time were unresponsive and would perhaps be an easier fix down the line.
+
 ## Acknowledgments
 
-Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) for providing the information to populate my pages and datbase with API content.
-Thanks to the [alluath](https://django-allauth.readthedocs.io/en/latest/faq.html) documentation whichh was used to figure out email servers during development.
-Thanks to the [django](https://docs.djangoproject.com/en/4.0/) docs which were also used as a step by step while going through the project to ensure everything was set up correctly.
-Thanks to [Corey Schafer](https://youtu.be/FdVuKt_iuSI) for the tutorial to get automatic profile creation and updating working as intended for my project.
-Thanks to My mentor Daisy McGirr for believing in me through the project and for answering the questions I had throughout.
+- Thanks to [dev.to](https://dev.to/yahaya_hk/how-to-populate-your-database-with-data-from-an-external-api-in-django-398i) for providing the information to populate my pages and datbase with API content.
+- Thanks to the [alluath](https://django-allauth.readthedocs.io/en/latest/faq.html) documentation whichh was used to figure out email servers during development.
+- Thanks to the [django](https://docs.djangoproject.com/en/4.0/) docs which were also used as a step by step while going through the project to ensure everything was set up correctly.
+- Thanks to [Corey Schafer](https://youtu.be/FdVuKt_iuSI) for the tutorial to get automatic profile creation and updating working as intended for my project.
+- Thanks to My mentor Daisy McGirr for believing in me through the project and for answering the questions I had throughout.
+- The Code Institute Django blog project was referenced during production for important steps and as a general guide.
+- Thanks to everyone who helped me from Code Institute Tutoring who helped me troubleshoot issues with the API and guiding me in the right direction.
 
 ## Credits
 
-Credit to [Julie Ucha](https://www.julieucha.com) for designing the logo and icon for the site.
-Credit to [Rawg](https://rawg.io) API for allowing the project to exist through the game requests and image display.
+- Credit to [Julie Ucha](https://www.julieucha.com) for designing the logo and icon for the site.
+- Credit to [Rawg](https://rawg.io) API for allowing the project to exist through the game requests and image display.
 
 All images of games are either taken from the API or uploaded publicly online, the site is made for educational purposes only and does not own any of the games featured on the site.
