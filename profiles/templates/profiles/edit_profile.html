@@ -4,6 +4,7 @@
 
 {% block content %}
 
+<!-- Form Container -->
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
@@ -11,19 +12,23 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset class="form-group">
+                    <!-- Crispy form loaded from forms.py -->
                     <legend class="border-bottom mb-4">Edit Profile Info</legend>
                     {{ u_form|crispy }}
                     {{ p_form|crispy }}
                 </fieldset>
                 <div class="form-group">
+                    <!-- Update and further setting buttons -->
                     <button class="btn btn-outline-info green" type="submit">Update</button>
                     <a href="{% url 'account_change_password' %}" class="btn">Change Password</a>
                     <a href="{% url 'account_email' %}" class="btn">Change Email</a>
                 </div>
                 <br>
+                <!-- Delete Profile Link -->
                 <a href="{% url 'deleteProfile' user.username %}" class="btn red">Delete Profile</a>
             </form>
             {% else %}
+            <!-- Error for unauthorized users -->
             <div>
                 <h2>This is not your profile! Please go back to your own profile page!</h2>
             </div>

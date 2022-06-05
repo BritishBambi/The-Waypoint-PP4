@@ -3,20 +3,24 @@
 
 
 {% block content %}
+
+<!-- Query Display -->
 <div id="index-banner">
   <div class="section">
     <div class="container center">
       <h2>Search results for:</h2>
       <h3>{{query}}</h3>
+      <!-- Redirect to search page -->
       <a href="{% url 'search' %}" class="waves-effect waves-light btn-large">Search again</a>
     </div>
   </div>
 </div>
 
-
+<!-- Game Card Container -->
 <div class="row">
   {% for game in game_data.results %}
   <div class="col-md-4 col-sm-6 col-lg-3">
+    <!-- Game Card Details -->
     <div class="card medium">
       <div class="card-image">
         <a href=""><img class="card-img-top" src="{{ game.background_image }}" alt=""></a>
@@ -24,6 +28,7 @@
       <div class="card-content">
         <span class="card-title">{{ game.name }}</span>
         <span>{{ game.released }}</span>
+        <!-- Link to Game Details -->
         <a href="{% url 'game_details' game.id %}"><input type="submit" value="Learn More"
             class="btn btn-danger btn-sm right" type="button" /></a>
       </div>
@@ -31,6 +36,7 @@
   </div>
   {% endfor %}
 </div>
+<!-- Pagination Button -->
 <div class="col s12 m12 center-align">
   <a href="{% url 'pagination' query page_number%}" class="waves-effect waves-light btn"></i>Load more</a>
   <div>

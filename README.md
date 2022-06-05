@@ -277,8 +277,6 @@ Create a confirmation message to make sure the user does not delete it by accide
 
 This simple user need has been met with ease. As detailed in my testing, it can only be accessed by the authorized user and provides a user confirmation to make sure it is not done by accident.
 
-
-
 ## Future Features
 
 For the furture of the site I have several updates that are planned. Either I did not have enough time to implement them or the amount of knowledge required to make them correctly.
@@ -290,6 +288,10 @@ The main feature that I have planned is for a browse page easily accessible from
 ### Review Comments/Likes
 
 This would allow further input and interaction from Users. Forms would be created so that comments would be left under reviews that could be liked or disliked to reflect public opinion. This would add a deeper user meaning to reviews and would inspire discussion on Reviews themselves rather than the game in general. This would be an ideal feature to add next into the project.
+
+### Profile Search
+
+A further feature that would be nice is a profile search or list. This could make it easier for users to find each other and engage further in discussion and find people with similar taste. A list could work by filtering through the list of profiles based on recent activity or recent reviews. This would encourage active engagement on a more regular basis.
 
 ## Testing
 

@@ -2,23 +2,30 @@
 {% load static %}
 
 {% block content %}
+
+<!-- Search Section -->
 <div class="parallax-container parallax-search">
-    <div class="parallax parallax-search"><img src="{% static 'img/overwatch.png' %}" alt="overwatch cover art"></div>
-  </div>
-  <div class="section">
-    <div class="row container search-div center-header">
-      <form class="col s12">
+  <!-- Top Background image -->
+  <div class="parallax parallax-search"><img src="{% static 'img/overwatch.png' %}" alt="overwatch cover art"></div>
+</div>
+<div class="section">
+  <div class="row container search-div center-header">
+    <form class="col s12">
+      <!-- Search form to get game query -->
       <div class="input-field col s12">
         <h2>Search:</h2>
-        <input type="text" placeholder="Start typing..." id="query" name="query" value="{{ request.GET.query }}" required>
+        <input type="text" placeholder="Start typing..." id="query" name="query" value="{{ request.GET.query }}"
+          required>
         <button type="submit" name="action" class="waves-effect waves-light btn">Find a game!</button>
       </div>
-      </form>
-    </div>
+    </form>
   </div>
-    <div class="parallax-container parallax-search">
-    <div class="parallax parallax-search"><img src="{% static 'img/apex-legends.png' %}" alt="apex legends cover art"></div>
+</div>
+<div class="parallax-container parallax-search">
+  <!-- Bottom Background Image -->
+  <div class="parallax parallax-search"><img src="{% static 'img/apex-legends.png' %}" alt="apex legends cover art">
   </div>
+</div>
 
-  
+
 {% endblock %}

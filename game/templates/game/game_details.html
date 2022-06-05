@@ -3,10 +3,12 @@
 {% load cloudinary %}
 
 {% block content %}
+<!-- Game Details Container  -->
 <div class="container">
     <br><br>
     <div class="row">
         <div class="col-md-5">
+            <!-- Basic Game Information -->
             <br>
             <img class="img-fluid" src='{{ game_data.background_image }}' alt="" style="width: 100%;">
             <br><br>
@@ -16,6 +18,7 @@
                 <b>{{ reviews_count }}</b> people</h4>
         </div>
         <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
+            <!-- Detailed Game Information -->
             <p class="lead">{{ game_data.description_raw }}</p>
             <ul>
                 <li><span>Released: <b>{{ game_data.released }}</b></span></li>
@@ -40,6 +43,7 @@
             </ul>
         </div>
         <div>
+            <!-- Profile list buttons -->
             <br>
             {% if review_exists == True %}
             <p>You Have Already Rated This game!</p>
@@ -64,12 +68,14 @@
 </div>
 <div class="divider"></div>
 
+<!-- Review sectionn -->
 <div class="row">
     <div class="col-lg-8 mt-3 offset-md-2">
         <h2 class="center">Reviews</h2>
         <div class="card">
             <div class="card-content">
                 <ul class="collection">
+                    <!-- List of user reviews -->
                     {% for review in reviews %}
                     <li class="collection-item avatar">
                         <a href="{% url 'profile' review.user.username %}"><img

@@ -2,17 +2,20 @@
 {% load static %}
 
 {% block content %}
+<!-- Page Container -->
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2 center">
             {% if user.is_authenticated and user == profile.user %}
             <form method="post" action="" role="form">
+                <!-- Form to confirm Account deletion -->
                 {% csrf_token %}
                 <h2>Are you sure you want to Delete your profile?</h2>
                 <p>This action cannot be reversed</p>
                 <button type="submit" name="action" class="waves-effect waves-light btn red center">Delete</button>
             </form>
             {% else %}
+            <!-- Error displayed when user is not authorized -->
             <h2>This is not your profile</h2>
             {% endif %}
         </div>

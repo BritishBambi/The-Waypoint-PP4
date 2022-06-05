@@ -1,21 +1,30 @@
 {% load static %}
-
+<!-- Document Start -->
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Head -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://kit.fontawesome.com/cd2a226592.js" crossorigin="anonymous"></script>
+    <meta name="description" content="A gaming review site, score your favourite games and find new ones!">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/ESniQaX.png">
+    <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Materialize CSS link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- My custom CSS link -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Font Awseome Script -->
+    <script src="https://kit.fontawesome.com/cd2a226592.js" crossorigin="anonymous"></script>
     <title>The Waypoint</title>
 </head>
-
+<!-- Body Start -->
 <body>
+    <!-- Site Header -->
     <header>
+        <!-- Nav bar -->
         <nav class="navbar-dark" id="navi">
             <div class="nav-wrapper">
                 <a href="{% url 'home' %}" id="logo"><img src="https://i.imgur.com/W7biBGR.png"
@@ -30,7 +39,7 @@
 
             </div>
         </nav>
-
+        <!-- Side Navbar used on mobile -->
         <ul class="sidenav" id="mobile-nav">
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'search' %}">Search</a></li>
@@ -43,6 +52,7 @@
             <li><a href="{% url 'account_login' %}">Log In</a></li>
             {% endif %}
         </ul>
+        <!-- Profile Dropdown menu -->
         <ul id="profile-dropdown" class="dropdown-content">
             {% if user.is_authenticated %}
             <li><a href="{% url 'profile' user.username %}">{{ user.username }}</a></li>
@@ -54,6 +64,8 @@
             {% endif %}
         </ul>
     </header>
+
+    <!-- Message Container -->
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
@@ -71,25 +83,34 @@
         {% endfor %}
     </div>
     {% endif %}
+
+    <!-- Main Site content -->
     <main>
         {% block content %}
-
+        <!-- Where main site content is loaded in the template -->
         {% endblock content %}
     </main>
+
+    <!-- Site Footer -->
     <footer class="page-footer text-center footer-color">
         <p>
             Copyright 2022: The Waypoint
         </p>
     </footer>
 
+    <!-- Jquery Script -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
+    <!-- Bootstrap JS Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
+    <!-- Materialize JS Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- My Custom JS script -->
     <script src="{% static 'js/script.js' %}"></script>
+    <!-- Message/Toast Script -->
     <script>
         $('.toast').toast('show');
     </script>

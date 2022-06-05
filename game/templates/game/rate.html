@@ -3,12 +3,13 @@
 
 {% block content %}
 
-<!--   Icon Section   -->
+<!-- Page container -->
 <div class="container">
     <br><br>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             {% if review_exists == True %}
+            <!-- Error if user has already made a review -->
             <h2 class="center">You Have Already Reviewed This Game!</h2>
             {% else %}
             <br>

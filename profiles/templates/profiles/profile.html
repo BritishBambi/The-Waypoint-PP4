@@ -4,9 +4,11 @@
 
 {% block content %}
 
+<!-- Profile Details Container -->
 <div class="container">
     <br><br>
     <div class="row">
+        <!-- Profile Picture  -->
         <div class="col-md-5">
             <br>
             {% if user.username.profile %}
@@ -17,6 +19,7 @@
             {% endif %}
             <br>
         </div>
+        <!-- Profile Details -->
         <div class="col-md-7 shadow-lg p-3 mb-5 rounded">
             <h3 class="card-title">{{ profile.user.username }}</h3>
             <ul style="font-size: 20px;">
@@ -30,9 +33,11 @@
         </div>
     </div>
 </div>
+<!-- Game list Container -->
 <div class="container">
     <div class="row">
         <div class="col-md-6">
+            <!-- Played Games -->
             <h3>Played Games</h3>
             <ul>
                 {% for game in profile.played.all %}
@@ -43,6 +48,7 @@
             </ul>
         </div>
         <div class="col-md-6">
+            <!-- Games to Play -->
             <h3>Games to play</h3>
             <ul>
                 {% for game in profile.to_play.all %}

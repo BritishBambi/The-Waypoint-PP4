@@ -3,18 +3,24 @@
 
 {% block content %}
 
+<!-- Page Container -->
 <div class="container">
     <br><br>
     <div class="row">
         <div class="col-md-10 mt-3 offset-md-1">
+            <!-- Review Content -->
             <div class="card">
                 <div class="card-content">
                     <ul class="collection">
                         <li class="collection-item avatar">
-                            <img src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture" class="circle">
+                            <a href="{% url 'profile' review.user.username %}"><img
+                                    src="{{ review.user.profile.profile_image.url }}" alt="Profile Picture"
+                                    class="circle"></a>
                             <span class="title"><b>{{ review.user.profile.first_name }}
                                     {{ review.user.profile.last_name }}</b></span>
-                            <p>@{{ review.user.username }}</p>
+                            <a href="{% url 'profile' review.user.username %}">
+                                <p>@{{ review.user.username }}</p>
+                            </a>
                             <p>{{ review.date }}</p>
                             <br>
                             <p>{{ review.text }}</p>
@@ -24,13 +30,12 @@
                     </ul>
                 </div>
             </div>
+            <!-- Delete Button if the current user if authenticated -->
             {% if user.is_authenticated and user == review.user %}
-            <a href="{% url 'delete_review' review.game.gameID review.user.username %}" class="btn red">Delete Review</a>
+            <a href="{% url 'delete_review' review.game.gameID review.user.username %}" class="btn red">Delete
+                Review</a>
             {% endif %}
         </div>
-    </div>
-    <div class="row">
-        
     </div>
 </div>
 
