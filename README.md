@@ -443,6 +443,7 @@ When a game only has one review the text will appear to say "Reviewed by 1 peopl
 - Thanks to the [alluath](https://django-allauth.readthedocs.io/en/latest/faq.html) documentation whichh was used to figure out email servers during development.
 - Thanks to the [django](https://docs.djangoproject.com/en/4.0/) docs which were also used as a step by step while going through the project to ensure everything was set up correctly.
 - Thanks to [Corey Schafer](https://youtu.be/FdVuKt_iuSI) for the tutorial to get automatic profile creation and updating working as intended for my project.
+- Thanks to [Arbadjie](https://www.youtube.com/watch?v=zFLQ5t_gte8) for understanding how to do a choice field for my ratings
 - Thanks to My mentor Daisy McGirr for believing in me through the project and for answering the questions I had throughout.
 - The Code Institute Django blog project was referenced during production for important steps and as a general guide.
 - Thanks to everyone who helped me from Code Institute Tutoring who helped me troubleshoot issues with the API and guiding me in the right direction.
