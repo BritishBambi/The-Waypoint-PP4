@@ -4,6 +4,8 @@
 
 My website is designed to allow user free reign to search and score games. The site features a search function that scans one of the largest video game databases to return some results back. Users can quickly find games and find out lots of information realting to them. The site is made with the intention of making video game data acccessible quickly and efficiently. Users can also create their own profile page, here they can display some basic information about themselves, as well as games they have played. This introduces a social element to the site which encourages sharing profiles and logging all the games users own.
 
+![Screenshot of site](assets/screenshots/site-screenshot.PNG "The Waypoint")
+
 [Link to Deployed site](https://the-waypoint.herokuapp.com)
 
 ## UX

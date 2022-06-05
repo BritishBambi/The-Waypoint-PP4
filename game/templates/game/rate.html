@@ -13,9 +13,11 @@
             <h2 class="center">You Have Already Reviewed This Game!</h2>
             {% else %}
             <br>
+            <!-- Game name -->
             <h3 class="card-title text-center ">Review for {{ game.name }}</h3>
             <br>
             <form method="post" action="" role="form">
+                <!-- Form to write/score game review -->
                 {% csrf_token %}
                 <div class="input-field">
                     {{ form.rate }}

@@ -163,7 +163,11 @@ small {
   }
 
   #welcome-header{
-    font-size: 60px;
+    font-size: 50px;
+  }
+
+  #site-description{
+    font-size: 30px !important;
   }
 
   .info-block{
@@ -175,6 +179,6 @@ small {
   }
 
   .fa-magnifying-glass{
-    display: none;
+    display: none !important;
   }
 }
