@@ -34,7 +34,7 @@ if os.environ.get("DEVELOPMENT"):
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ['the-waypoint.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['waypoint.up.railway.app', 'localhost']
 
 
 # Application definition
